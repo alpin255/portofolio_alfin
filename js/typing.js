@@ -7,11 +7,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (!typingElement) return;
 
   const roles = [
-    'Software Developer',
-    'Fullstack Web Developer',
-    'Informatics Student @ Bhinneka PGRI',
-    'Modern UI/UX Enthusiast',
-    'Open Source Contributor'
+    'Software & Web Developer',
+    'Laravel & Vue.js 3 Developer',
+    'Java Application Developer',
+    'Informatics Student @ Universitas Bhinneka PGRI',
+    'Fullstack Solution Builder'
   ];
 
   let roleIndex = 0;

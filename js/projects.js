@@ -5,40 +5,42 @@
 
 const projectsData = [
   {
-    id: 'smart-campus',
-    title: 'Smart Campus Bhinneka',
+    id: 'e-pelanggaran-smk',
+    title: 'E-Pelanggaran SMKN 1 Rejotangan',
     category: 'fullstack',
-    categoryLabel: 'Fullstack App',
+    categoryLabel: 'Magang & Fullstack Web',
     image: 'assets/images/project-academic.jpg',
-    shortDesc: 'Sistem Informasi Akademik dan Portal Mahasiswa terintegrasi dengan visualisasi kehadiran dan performa nilai berbasis web.',
-    fullDesc: 'Smart Campus Bhinneka adalah platform sistem informasi akademik generasi baru yang dirancang untuk mempermudah civitas akademika Universitas Bhinneka PGRI dalam mengakses jadwal kuliah, kartu rencana studi (KRS), transkrip nilai, serta monitoring absensi perkuliahan secara real-time dengan visualisasi data interaktif.',
+    shortDesc: 'Sistem manajemen kedisiplinan dan rekam jejak poin pelanggaran siswa berbasis web yang dibangun selama masa magang di SMKN 1 Rejotangan.',
+    fullDesc: 'Sistem Informasi E-Pelanggaran SMKN 1 Rejotangan dikembangkan untuk mendigitalkan proses pencatatan tata tertib siswa yang sebelumnya dilakukan secara konvensional. Dibangun dengan backend Laravel yang tangguh dan antarmuka reaktif Vue 3, sistem ini memungkinkan Guru BK, Tim Kesiswaan, dan Wali Kelas mencatat dan memonitor akumulasi poin pelanggaran siswa secara real-time, serta mencetak Surat Panggilan Orang Tua secara otomatis.',
     features: [
-      'Dashboard analitik performa IPK mahasiswa dengan grafik interaktif',
-      'Manajemen KRS online dengan validasi kuota kelas otomatis',
-      'Presensi perkuliahan berbasis QR Code dan verifikasi lokasi',
-      'Portal pengumuman terintegrasi notifikasi email dan Telegram bot'
+      'Dibangun dan diimplementasikan secara langsung untuk kebutuhan magang di SMKN 1 Rejotangan',
+      'Arsitektur RESTful API dengan backend Laravel dan antarmuka Single Page Application Vue 3',
+      'Manajemen hak akses role-based (Kesiswaan, Guru BK, Wali Kelas, dan Siswa)',
+      'Perhitungan bobot poin pelanggaran otomatis serta ambang batas Surat Peringatan (SP 1, 2, 3)',
+      'Ekspor rekapitulasi kedisiplinan siswa ke format PDF resmi dan spreadsheet Excel'
     ],
-    techs: ['JavaScript', 'HTML5', 'CSS3', 'Node.js', 'REST API', 'Chart.js'],
+    techs: ['Laravel', 'Vue 3', 'MySQL', 'RESTful API', 'Tailwind CSS', 'Pinia'],
     demoUrl: 'https://github.com/alfinprayoga',
-    githubUrl: 'https://github.com/alfinprayoga/smart-campus'
+    githubUrl: 'https://github.com/alfinprayoga/e-pelanggaran-smkn1rejotangan'
   },
   {
-    id: 'kasirku-pro',
-    title: 'KasirKu Pro - Cloud POS',
+    id: 'kasir-toko-kelontong',
+    title: 'Sistem Kasir POS Toko Kelontong',
     category: 'webapp',
-    categoryLabel: 'Web Application',
+    categoryLabel: 'Java Desktop & Production',
     image: 'assets/images/project-pos.jpg',
-    shortDesc: 'Aplikasi kasir berbasis cloud dengan manajemen inventaris barang real-time, laporan laba rugi, dan cetak struk thermal.',
-    fullDesc: 'KasirKu Pro dirancang khusus untuk membantu pelaku UMKM di wilayah Tulungagung dan sekitarnya mendigitalkan pembukuan transaksi kasir. Sistem ini dilengkapi dengan barcode scanning via webcam, sinkronisasi stok otomatis, dan rekapitulasi omzet harian/bulanan secara akurat.',
+    shortDesc: 'Aplikasi kasir Point of Sale (POS) berbasis Java dan MySQL yang telah diimplementasikan dan digunakan aktif di beberapa toko kelontong di Rejotangan.',
+    fullDesc: 'Aplikasi kasir desktop yang dibangun menggunakan Java dan database relasional MySQL untuk membantu para pemilik toko kelontong di daerah Rejotangan dan sekitarnya. Sistem ini dirancang untuk operasional harian yang cepat, stabil, tanpa ketergantungan koneksi internet, serta mendukung pemindaian barcode barang dan pencetakan struk thermal.',
     features: [
-      'Pencatatan transaksi kasir cepat (Point of Sale) responsif tablet & desktop',
-      'Katalog produk visual dengan filter barcode, stok tipis, dan kategori',
-      'Ekspor laporan keuangan berkala ke format Excel dan PDF siap cetak',
-      'Dukungan cetak struk via printer thermal Bluetooth / USB'
+      'Telah diimplementasikan dan aktif beroperasi di beberapa toko kelontong daerah Rejotangan',
+      'Pencatatan transaksi kasir kilat dengan dukungan Barcode Scanner & Shortcut Keyboard',
+      'Manajemen stok barang masuk-keluar serta sistem peringatan saat persediaan menipis',
+      'Dukungan penetapan harga eceran dan grosir bertingkat secara fleksibel',
+      'Integrasi cetak struk belanja otomatis via Printer Thermal (ESC/POS) dan rekap omzet harian'
     ],
-    techs: ['JavaScript (ES6+)', 'Tailwind CSS', 'IndexedDB', 'HTML5 Canvas', 'REST API'],
+    techs: ['Java', 'MySQL', 'Desktop POS', 'JDBC', 'Thermal Printer API', 'Report Generator'],
     demoUrl: 'https://github.com/alfinprayoga',
-    githubUrl: 'https://github.com/alfinprayoga/kasirku-pos'
+    githubUrl: 'https://github.com/alfinprayoga/java-pos-tokokelontong'
   },
   {
     id: 'desa-digital',

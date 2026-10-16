@@ -691,9 +691,16 @@ section {
   font-size: 0.85rem;
 }
 
-.icon-js { background: #f7df1e; color: #000; font-weight: 800; }
-.icon-react { background: #06b6d4; color: #fff; }
-.icon-edu { background: var(--accent-primary); color: #fff; }
+.badge-icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.icon-code { background: var(--accent-primary); color: #fff; }
+.icon-vue { background: #41b883; color: #fff; }
+.icon-laravel { background: #ff2d20; color: #fff; }
+.icon-java { background: #f89820; color: #fff; }
+.icon-edu { background: var(--accent-secondary); color: #fff; }
 
 /* ===================================================================
    ABOUT ME SECTION
@@ -909,12 +916,17 @@ section {
   width: 44px;
   height: 44px;
   border-radius: 12px;
-  background: var(--bg-glass);
+  background: rgba(99, 102, 241, 0.12);
   border: 1px solid var(--border-glass);
   display: grid;
   place-items: center;
-  font-size: 1.35rem;
   color: var(--accent-secondary);
+}
+
+.skill-icon svg {
+  width: 22px;
+  height: 22px;
+  stroke: var(--accent-secondary);
 }
 
 .skill-title {

@@ -119,7 +119,7 @@
             <span>Tersedia untuk Proyek & Kolaborasi</span>
           </div>
 
-          <p class="hero-greeting">Halo semuanya! 👋 Saya</p>
+          <p class="hero-greeting">Selamat Datang — Saya</p>
           <h1 class="hero-name">
             Muhammad <span class="gradient-text">Alfin Prayoga</span>
           </h1>
@@ -171,12 +171,16 @@
 
             <!-- Floating Badges -->
             <div class="floating-badge badge-top">
-              <span class="badge-icon icon-js">JS</span>
-              <span>Fullstack Web</span>
+              <span class="badge-icon icon-code">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              </span>
+              <span>Laravel & Vue 3</span>
             </div>
 
             <div class="floating-badge badge-bottom">
-              <span class="badge-icon icon-edu">🎓</span>
+              <span class="badge-icon icon-edu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </span>
               <span>Univ. Bhinneka PGRI</span>
             </div>
           </div>
@@ -211,12 +215,12 @@
 
           <!-- Narrative & Information -->
           <div class="about-content reveal reveal-delay-1">
-            <h3>Membangun Pengalaman Web yang Cepat, Responsif, & Bermakna</h3>
+            <h3>Solusi Perangkat Lunak Teruji & Berdampak Nyata</h3>
             <p class="about-text">
-              Saya adalah seorang <strong>Software & Web Developer</strong> yang saat ini menempuh pendidikan di <strong>Universitas Bhinneka PGRI</strong>. Ketertarikan saya pada dunia pemrograman berawal dari rasa ingin tahu bagaimana sebuah baris kode dapat memecahkan masalah nyata di kehidupan sehari-hari.
+              Saya adalah seorang <strong>Software & Web Developer</strong> yang saat ini menempuh studi S1 Teknik Informatika di <strong>Universitas Bhinneka PGRI</strong>. Saya berfokus pada perancangan sistem informasi berbasis web maupun aplikasi desktop yang tangguh, efisien, dan siap diimplementasikan di lingkungan kerja nyata.
             </p>
             <p class="about-text">
-              Fokus utama saya mencakup pengembangan web modern menggunakan standar <strong>HTML5, CSS3, dan JavaScript (ES6+)</strong> murni tanpa ketergantungan berlebihan pada framework berat, sehingga menghasilkan performa loading yang sangat kencang dan hemat bandwidth.
+              Pengalaman nyata saya meliputi pengembangan <strong>Sistem E-Pelanggaran di SMKN 1 Rejotangan</strong> menggunakan backend <strong>Laravel</strong> dan frontend <strong>Vue 3</strong> untuk memfasilitasi pencatatan kedisiplinan siswa selama masa magang, serta merancang dan mengimplementasikan <strong>Sistem Kasir Point of Sale (POS) berbasis Java</strong> yang telah aktif digunakan dalam operasional harian beberapa toko kelontong di daerah Rejotangan, Tulungagung.
             </p>
 
             <!-- Quick Information Meta Cards -->
@@ -306,11 +310,97 @@
 
         <!-- Skills Cards Grid -->
         <div class="skills-grid">
-          <!-- HTML5 -->
+          <!-- Laravel Framework -->
+          <div class="skill-card reveal" data-category="backend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16.5 9.4 7.55 4.24a1.8 1.8 0 0 0-1.8 0L2.1 6.34a1.8 1.8 0 0 0-.9 1.56v5.8a1.8 1.8 0 0 0 .9 1.56l3.65 2.1a1.8 1.8 0 0 0 1.8 0l8.95-5.16a1.8 1.8 0 0 0 .9-1.56v-5.8a1.8 1.8 0 0 0-.9-1.56Z"/><path d="m2.1 6.34 9.45 5.46M11.55 11.8v10.4"/><path d="m11.55 11.8 8.95-5.16"/></svg>
+                </div>
+                <h3 class="skill-title">Laravel (PHP)</h3>
+              </div>
+              <span class="skill-level-text">88%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="88"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">RESTful API</span>
+              <span class="skill-pill">Eloquent ORM</span>
+              <span class="skill-pill">Auth & Middleware</span>
+            </div>
+          </div>
+
+          <!-- Vue.js 3 -->
+          <div class="skill-card reveal reveal-delay-1" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 19.5 22 19.5 12 2"/><polygon points="12 6 5.5 17.5 18.5 17.5 12 6"/></svg>
+                </div>
+                <h3 class="skill-title">Vue.js 3</h3>
+              </div>
+              <span class="skill-level-text">85%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="85"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Composition API</span>
+              <span class="skill-pill">Pinia State</span>
+              <span class="skill-pill">Vue Router</span>
+            </div>
+          </div>
+
+          <!-- Java -->
+          <div class="skill-card reveal reveal-delay-2" data-category="backend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+                </div>
+                <h3 class="skill-title">Java (Desktop & OOP)</h3>
+              </div>
+              <span class="skill-level-text">82%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="82"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Desktop POS Apps</span>
+              <span class="skill-pill">JDBC & MySQL</span>
+              <span class="skill-pill">Thermal Printing</span>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
           <div class="skill-card reveal" data-category="frontend">
             <div class="skill-header">
               <div class="skill-icon-wrap">
-                <div class="skill-icon">🌐</div>
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <h3 class="skill-title">JavaScript (ES6+)</h3>
+              </div>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Async/Await & Fetch</span>
+              <span class="skill-pill">DOM & Canvas</span>
+              <span class="skill-pill">Modern Tooling</span>
+            </div>
+          </div>
+
+          <!-- HTML5 -->
+          <div class="skill-card reveal reveal-delay-1" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                </div>
                 <h3 class="skill-title">HTML5 Semantic</h3>
               </div>
               <span class="skill-level-text">95%</span>
@@ -321,54 +411,18 @@
             <div class="skill-tags">
               <span class="skill-pill">Accessibility (a11y)</span>
               <span class="skill-pill">SEO Structured</span>
-              <span class="skill-pill">Canvas API</span>
+              <span class="skill-pill">Clean Markup</span>
             </div>
           </div>
 
           <!-- CSS3 -->
-          <div class="skill-card reveal reveal-delay-1" data-category="frontend">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <div class="skill-icon">🎨</div>
-                <h3 class="skill-title">CSS3 & Styling</h3>
-              </div>
-              <span class="skill-level-text">90%</span>
-            </div>
-            <div class="skill-bar-bg">
-              <div class="skill-bar-fill" data-width="90"></div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-pill">Flexbox & Grid</span>
-              <span class="skill-pill">Glassmorphism</span>
-              <span class="skill-pill">Keyframe Animations</span>
-            </div>
-          </div>
-
-          <!-- JavaScript -->
           <div class="skill-card reveal reveal-delay-2" data-category="frontend">
             <div class="skill-header">
               <div class="skill-icon-wrap">
-                <div class="skill-icon">⚡</div>
-                <h3 class="skill-title">JavaScript (ES6+)</h3>
-              </div>
-              <span class="skill-level-text">88%</span>
-            </div>
-            <div class="skill-bar-bg">
-              <div class="skill-bar-fill" data-width="88"></div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-pill">Async/Await & Fetch</span>
-              <span class="skill-pill">DOM Manipulation</span>
-              <span class="skill-pill">IntersectionObserver</span>
-            </div>
-          </div>
-
-          <!-- Responsive Web Design -->
-          <div class="skill-card reveal" data-category="frontend">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <div class="skill-icon">📱</div>
-                <h3 class="skill-title">Responsive Design</h3>
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                </div>
+                <h3 class="skill-title">CSS3 & Styling</h3>
               </div>
               <span class="skill-level-text">92%</span>
             </div>
@@ -376,56 +430,41 @@
               <div class="skill-bar-fill" data-width="92"></div>
             </div>
             <div class="skill-tags">
-              <span class="skill-pill">Mobile-First</span>
-              <span class="skill-pill">Media Queries</span>
-              <span class="skill-pill">Fluid Typography</span>
+              <span class="skill-pill">Flexbox & Grid</span>
+              <span class="skill-pill">Glassmorphism</span>
+              <span class="skill-pill">Responsive Design</span>
             </div>
           </div>
 
-          <!-- Backend Node.js -->
-          <div class="skill-card reveal reveal-delay-1" data-category="backend">
+          <!-- MySQL Database -->
+          <div class="skill-card reveal" data-category="backend">
             <div class="skill-header">
               <div class="skill-icon-wrap">
-                <div class="skill-icon">🟢</div>
-                <h3 class="skill-title">Node.js & Express</h3>
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+                </div>
+                <h3 class="skill-title">MySQL & Database</h3>
               </div>
-              <span class="skill-level-text">80%</span>
+              <span class="skill-level-text">85%</span>
             </div>
             <div class="skill-bar-bg">
-              <div class="skill-bar-fill" data-width="80"></div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-pill">RESTful API</span>
-              <span class="skill-pill">JWT Auth</span>
-              <span class="skill-pill">Middleware</span>
-            </div>
-          </div>
-
-          <!-- Database -->
-          <div class="skill-card reveal reveal-delay-2" data-category="backend">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <div class="skill-icon">🗄️</div>
-                <h3 class="skill-title">MySQL & SQL</h3>
-              </div>
-              <span class="skill-level-text">82%</span>
-            </div>
-            <div class="skill-bar-bg">
-              <div class="skill-bar-fill" data-width="82"></div>
+              <div class="skill-bar-fill" data-width="85"></div>
             </div>
             <div class="skill-tags">
               <span class="skill-pill">Relational Schema</span>
               <span class="skill-pill">Query Optimization</span>
-              <span class="skill-pill">CRUD Modeling</span>
+              <span class="skill-pill">Indexing & Views</span>
             </div>
           </div>
 
           <!-- Git & GitHub -->
-          <div class="skill-card reveal" data-category="tools">
+          <div class="skill-card reveal reveal-delay-1" data-category="tools">
             <div class="skill-header">
               <div class="skill-icon-wrap">
-                <div class="skill-icon">🐙</div>
-                <h3 class="skill-title">Git & GitHub Pages</h3>
+                <div class="skill-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></svg>
+                </div>
+                <h3 class="skill-title">Git & GitHub Workflow</h3>
               </div>
               <span class="skill-level-text">88%</span>
             </div>
@@ -433,28 +472,9 @@
               <div class="skill-bar-fill" data-width="88"></div>
             </div>
             <div class="skill-tags">
-              <span class="skill-pill">Branching & Merge</span>
-              <span class="skill-pill">GitHub Pages CI/CD</span>
-              <span class="skill-pill">Open Source</span>
-            </div>
-          </div>
-
-          <!-- Tools -->
-          <div class="skill-card reveal reveal-delay-1" data-category="tools">
-            <div class="skill-header">
-              <div class="skill-icon-wrap">
-                <div class="skill-icon">🛠️</div>
-                <h3 class="skill-title">Developer Tooling</h3>
-              </div>
-              <span class="skill-level-text">86%</span>
-            </div>
-            <div class="skill-bar-bg">
-              <div class="skill-bar-fill" data-width="86"></div>
-            </div>
-            <div class="skill-tags">
-              <span class="skill-pill">VS Code</span>
-              <span class="skill-pill">Chrome DevTools</span>
-              <span class="skill-pill">Postman API Testing</span>
+              <span class="skill-pill">Version Control</span>
+              <span class="skill-pill">GitHub Pages Deploy</span>
+              <span class="skill-pill">Collaboration</span>
             </div>
           </div>
         </div>
@@ -657,7 +677,10 @@
 
             <!-- Quick WhatsApp CTA Box -->
             <div class="wa-direct-card">
-              <h4>💬 Diskusi Cepat via WhatsApp</h4>
+              <h4>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align: middle; margin-right: 6px;"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Konsultasi Langsung via WhatsApp
+              </h4>
               <p>Butuh respons instan untuk tawaran proyek atau konsultasi teknis?</p>
               <button class="btn btn-whatsapp" id="btn-wa-direct">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>

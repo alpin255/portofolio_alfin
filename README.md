@@ -26,15 +26,16 @@ Website portofolio modern berkinerja tinggi yang dibangun menggunakan **100% Pur
 
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Tech Stack & Spesialisasi
 
-| Layer | Teknologi |
+| Bidang | Teknologi Utama |
 | :--- | :--- |
-| **Markup** | HTML5 Semantic Web Architecture |
-| **Styling** | Modern CSS3 (Custom Variables, Flexbox, CSS Grid, Glassmorphism) |
-| **Logika & Interaktivitas** | Vanilla JavaScript (ES6+, IntersectionObserver, Canvas API) |
-| **Tipografi** | Google Fonts (*Plus Jakarta Sans* & *JetBrains Mono*) |
-| **Hosting & CI/CD** | GitHub Pages (Zero-Config Static Hosting) |
+| **Backend & API** | Laravel (PHP), RESTful API, Node.js |
+| **Frontend Frameworks** | Vue.js 3 (Composition API, Pinia), Tailwind CSS |
+| **Desktop & Production** | Java (Desktop POS & Inventory), JDBC, ESC/POS Thermal Printing |
+| **Core Web Foundation** | HTML5 Semantic, Modern CSS3 (Glassmorphism), Vanilla JavaScript (ES6+) |
+| **Basis Data** | MySQL Relational Database Schema & Query Optimization |
+| **Version Control & Hosting** | Git, GitHub, GitHub Pages (Zero-Config Static Hosting) |
 
 ---
 
