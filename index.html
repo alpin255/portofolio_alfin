@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Alfin Prayoga | Software & Web Developer</title>
+  
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portofolio resmi Muhammad Alfin Prayoga - Software dan Web Developer dari Rejotangan, Tulungagung, Jawa Timur. Mahasiswa Universitas Bhinneka PGRI.">
+  <meta name="keywords" content="Muhammad Alfin Prayoga, Software Developer, Web Developer, Universitas Bhinneka PGRI, Tulungagung, Rejotangan, Frontend Developer, Fullstack Developer">
+  <meta name="author" content="Muhammad Alfin Prayoga">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook / LinkedIn -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://alfinprayoga.github.io/portofolio/">
+  <meta property="og:title" content="Muhammad Alfin Prayoga | Software & Web Developer">
+  <meta property="og:description" content="Portofolio profesional Muhammad Alfin Prayoga - Mahasiswa Universitas Bhinneka PGRI berfokus pada software development dan web modern.">
+  <meta property="og:image" content="assets/images/profile.jpg">
+
+  <!-- Twitter Meta -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Muhammad Alfin Prayoga | Software & Web Developer">
+  <meta name="twitter:description" content="Portofolio profesional Muhammad Alfin Prayoga - Software & Web Developer dari Rejotangan, Tulungagung.">
+  <meta name="twitter:image" content="assets/images/profile.jpg">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <!-- Structured Data JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Muhammad Alfin Prayoga",
+    "jobTitle": "Software and Web Developer",
+    "alumniOf": "Universitas Bhinneka PGRI",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Rejotangan",
+      "addressRegion": "Tulungagung, Jawa Timur",
+      "addressCountry": "Indonesia"
+    },
+    "url": "https://alfinprayoga.github.io/portofolio/"
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Particle Canvas Background -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Ambient Glowing Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="container nav-container">
+      <a href="#home" class="nav-logo" aria-label="Beranda Alfin Prayoga">
+        <span class="logo-badge">AP</span>
+        <span>Alfin<span class="gradient-text">.dev</span></span>
+      </a>
+
+      <!-- Desktop & Mobile Menu -->
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#home" class="nav-link active">Beranda</a>
+        <a href="#about" class="nav-link">Tentang</a>
+        <a href="#skills" class="nav-link">Keahlian</a>
+        <a href="#projects" class="nav-link">Portofolio</a>
+        <a href="#education" class="nav-link">Pendidikan</a>
+        <a href="#contact" class="nav-link">Kontak</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <button class="theme-toggle-btn" id="theme-toggle" aria-label="Ganti Tema Gelap / Terang">
+          <!-- Sun Icon for Light Mode -->
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <!-- Moon Icon for Dark Mode -->
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+
+        <a href="#contact" class="btn btn-primary btn-sm" style="display: none;">Hubungi</a>
+
+        <!-- Hamburger Icon for Mobile -->
+        <button class="hamburger" id="hamburger" aria-label="Buka Menu Navigasi">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Menu Backdrop -->
+  <div class="nav-backdrop" id="nav-backdrop"></div>
+
+  <!-- MAIN CONTENT -->
+  <main>
+
+    <!-- ===================================================================
+         HERO SECTION
+         =================================================================== -->
+    <section class="hero-section" id="home">
+      <div class="container hero-grid">
+        <!-- Hero Text & CTA -->
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="status-dot"></span>
+            <span>Tersedia untuk Proyek & Kolaborasi</span>
+          </div>
+
+          <p class="hero-greeting">Halo semuanya! 👋 Saya</p>
+          <h1 class="hero-name">
+            Muhammad <span class="gradient-text">Alfin Prayoga</span>
+          </h1>
+
+          <div class="hero-typing-wrap">
+            <span>Spesialisasi: &nbsp;</span>
+            <span class="typing-text" id="typing-text">Software Developer</span>
+            <span class="typing-cursor"></span>
+          </div>
+
+          <p class="hero-description">
+            Mahasiswa Teknik Informatika di <strong>Universitas Bhinneka PGRI</strong> yang berdedikasi membangun aplikasi web modern yang cepat, andal, dan memiliki estetika visual premium. Berdomisili di <strong>Rejotangan, Tulungagung, Jawa Timur</strong>.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#projects" class="btn btn-primary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Lihat Karya Proyek
+            </a>
+            <a href="#contact" class="btn btn-secondary">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              Hubungi Sekarang
+            </a>
+          </div>
+
+          <!-- Social Media Icons -->
+          <div class="hero-socials">
+            <a href="https://github.com/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            </a>
+            <a href="https://linkedin.com/in/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            </a>
+            <a href="https://instagram.com/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram Profile">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="mailto:alfinprayoga.dev@gmail.com" class="social-link" aria-label="Email Alfin">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Avatar Showcase -->
+        <div class="hero-visual">
+          <div class="avatar-frame">
+            <div class="avatar-inner">
+              <img src="assets/images/profile.jpg" alt="Muhammad Alfin Prayoga - Software and Web Developer" width="400" height="400">
+            </div>
+
+            <!-- Floating Badges -->
+            <div class="floating-badge badge-top">
+              <span class="badge-icon icon-js">JS</span>
+              <span>Fullstack Web</span>
+            </div>
+
+            <div class="floating-badge badge-bottom">
+              <span class="badge-icon icon-edu">🎓</span>
+              <span>Univ. Bhinneka PGRI</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         ABOUT ME SECTION
+         =================================================================== -->
+    <section id="about">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Tentang Saya</span>
+          <h2 class="section-title">Dedikasi Pada <span class="gradient-text">Kode Berkualitas</span></h2>
+          <p class="section-subtitle">
+            Kombinasi antara logika rekayasa perangkat lunak dan kepekaan visual untuk menciptakan solusi digital berdampak nyata.
+          </p>
+        </div>
+
+        <div class="about-grid">
+          <!-- Portrait with Location Overlay -->
+          <div class="about-card-portrait reveal">
+            <img src="assets/images/profile.jpg" alt="Muhammad Alfin Prayoga" loading="lazy">
+            <div class="about-portrait-overlay">
+              <span class="location-tag">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Rejotangan, Tulungagung, Jawa Timur
+              </span>
+            </div>
+          </div>
+
+          <!-- Narrative & Information -->
+          <div class="about-content reveal reveal-delay-1">
+            <h3>Membangun Pengalaman Web yang Cepat, Responsif, & Bermakna</h3>
+            <p class="about-text">
+              Saya adalah seorang <strong>Software & Web Developer</strong> yang saat ini menempuh pendidikan di <strong>Universitas Bhinneka PGRI</strong>. Ketertarikan saya pada dunia pemrograman berawal dari rasa ingin tahu bagaimana sebuah baris kode dapat memecahkan masalah nyata di kehidupan sehari-hari.
+            </p>
+            <p class="about-text">
+              Fokus utama saya mencakup pengembangan web modern menggunakan standar <strong>HTML5, CSS3, dan JavaScript (ES6+)</strong> murni tanpa ketergantungan berlebihan pada framework berat, sehingga menghasilkan performa loading yang sangat kencang dan hemat bandwidth.
+            </p>
+
+            <!-- Quick Information Meta Cards -->
+            <div class="about-info-grid">
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                </div>
+                <div class="info-meta">
+                  <span>Pendidikan</span>
+                  <strong>Univ. Bhinneka PGRI</strong>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="info-meta">
+                  <span>Lokasi</span>
+                  <strong>Rejotangan, Tulungagung</strong>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                </div>
+                <div class="info-meta">
+                  <span>Status</span>
+                  <strong>Tersedia Freelance / Magang</strong>
+                </div>
+              </div>
+
+              <div class="info-item">
+                <div class="info-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                </div>
+                <div class="info-meta">
+                  <span>Fokus</span>
+                  <strong>Software & Web Dev</strong>
+                </div>
+              </div>
+            </div>
+
+            <!-- Stats Counter Grid -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <span class="stat-number" data-target="15" data-suffix="+">0</span>
+                <span class="stat-label">Proyek Diselesaikan</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number" data-target="3" data-suffix="+">0</span>
+                <span class="stat-label">Tahun Pemrograman</span>
+              </div>
+              <div class="stat-card">
+                <span class="stat-number" data-target="100" data-suffix="%">0</span>
+                <span class="stat-label">Komitmen Hasil</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         SKILLS & TECHNOLOGIES
+         =================================================================== -->
+    <section id="skills">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Tech Stack</span>
+          <h2 class="section-title">Keahlian & <span class="gradient-text">Teknologi</span></h2>
+          <p class="section-subtitle">
+            Alat dan teknologi yang saya manfaatkan untuk membangun aplikasi berkinerja tinggi dan teruji.
+          </p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="skills-tabs">
+          <button class="tab-btn active" data-category="all">Semua</button>
+          <button class="tab-btn" data-category="frontend">Frontend</button>
+          <button class="tab-btn" data-category="backend">Backend & DB</button>
+          <button class="tab-btn" data-category="tools">Tools & DevOps</button>
+        </div>
+
+        <!-- Skills Cards Grid -->
+        <div class="skills-grid">
+          <!-- HTML5 -->
+          <div class="skill-card reveal" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🌐</div>
+                <h3 class="skill-title">HTML5 Semantic</h3>
+              </div>
+              <span class="skill-level-text">95%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="95"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Accessibility (a11y)</span>
+              <span class="skill-pill">SEO Structured</span>
+              <span class="skill-pill">Canvas API</span>
+            </div>
+          </div>
+
+          <!-- CSS3 -->
+          <div class="skill-card reveal reveal-delay-1" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🎨</div>
+                <h3 class="skill-title">CSS3 & Styling</h3>
+              </div>
+              <span class="skill-level-text">90%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="90"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Flexbox & Grid</span>
+              <span class="skill-pill">Glassmorphism</span>
+              <span class="skill-pill">Keyframe Animations</span>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="skill-card reveal reveal-delay-2" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">⚡</div>
+                <h3 class="skill-title">JavaScript (ES6+)</h3>
+              </div>
+              <span class="skill-level-text">88%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="88"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Async/Await & Fetch</span>
+              <span class="skill-pill">DOM Manipulation</span>
+              <span class="skill-pill">IntersectionObserver</span>
+            </div>
+          </div>
+
+          <!-- Responsive Web Design -->
+          <div class="skill-card reveal" data-category="frontend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">📱</div>
+                <h3 class="skill-title">Responsive Design</h3>
+              </div>
+              <span class="skill-level-text">92%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="92"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Mobile-First</span>
+              <span class="skill-pill">Media Queries</span>
+              <span class="skill-pill">Fluid Typography</span>
+            </div>
+          </div>
+
+          <!-- Backend Node.js -->
+          <div class="skill-card reveal reveal-delay-1" data-category="backend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🟢</div>
+                <h3 class="skill-title">Node.js & Express</h3>
+              </div>
+              <span class="skill-level-text">80%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="80"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">RESTful API</span>
+              <span class="skill-pill">JWT Auth</span>
+              <span class="skill-pill">Middleware</span>
+            </div>
+          </div>
+
+          <!-- Database -->
+          <div class="skill-card reveal reveal-delay-2" data-category="backend">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🗄️</div>
+                <h3 class="skill-title">MySQL & SQL</h3>
+              </div>
+              <span class="skill-level-text">82%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="82"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Relational Schema</span>
+              <span class="skill-pill">Query Optimization</span>
+              <span class="skill-pill">CRUD Modeling</span>
+            </div>
+          </div>
+
+          <!-- Git & GitHub -->
+          <div class="skill-card reveal" data-category="tools">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🐙</div>
+                <h3 class="skill-title">Git & GitHub Pages</h3>
+              </div>
+              <span class="skill-level-text">88%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="88"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">Branching & Merge</span>
+              <span class="skill-pill">GitHub Pages CI/CD</span>
+              <span class="skill-pill">Open Source</span>
+            </div>
+          </div>
+
+          <!-- Tools -->
+          <div class="skill-card reveal reveal-delay-1" data-category="tools">
+            <div class="skill-header">
+              <div class="skill-icon-wrap">
+                <div class="skill-icon">🛠️</div>
+                <h3 class="skill-title">Developer Tooling</h3>
+              </div>
+              <span class="skill-level-text">86%</span>
+            </div>
+            <div class="skill-bar-bg">
+              <div class="skill-bar-fill" data-width="86"></div>
+            </div>
+            <div class="skill-tags">
+              <span class="skill-pill">VS Code</span>
+              <span class="skill-pill">Chrome DevTools</span>
+              <span class="skill-pill">Postman API Testing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         PROJECTS PORTFOLIO
+         =================================================================== -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Portofolio</span>
+          <h2 class="section-title">Karya & <span class="gradient-text">Proyek Pilihan</span></h2>
+          <p class="section-subtitle">
+            Kumpulan proyek perangkat lunak dan aplikasi web yang telah saya bangun dengan fokus pada fungsionalitas dan pengalaman pengguna.
+          </p>
+        </div>
+
+        <!-- Category Filters -->
+        <div class="projects-filter">
+          <button class="filter-btn active" data-filter="all">Semua Proyek</button>
+          <button class="filter-btn" data-filter="webapp">Web App</button>
+          <button class="filter-btn" data-filter="fullstack">Fullstack</button>
+          <button class="filter-btn" data-filter="frontend">Frontend & UI</button>
+        </div>
+
+        <!-- Projects Grid Container (Populated dynamically by js/projects.js) -->
+        <div class="projects-grid" id="projects-grid">
+          <!-- Dynamic rendering via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         EDUCATION & TIMELINE
+         =================================================================== -->
+    <section id="education">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Jejak Akademik</span>
+          <h2 class="section-title">Pendidikan & <span class="gradient-text">Perjalanan</span></h2>
+          <p class="section-subtitle">
+            Fondasi akademik dan pembelajaran berkelanjutan yang membentuk keahlian teknis saya saat ini.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- Universitas Bhinneka PGRI -->
+          <div class="timeline-item reveal">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-badge">2023 — Sekarang (Aktif)</span>
+              <h3 class="timeline-title">S1 Teknik Informatika</h3>
+              <p class="timeline-subtitle">Universitas Bhinneka PGRI, Tulungagung</p>
+              <p class="timeline-desc">
+                Mempelajari prinsip rekayasa perangkat lunak, algoritma dan struktur data, pemrograman berorientasi objek, perancangan basis data relasional, serta arsitektur komputasi web modern.
+              </p>
+              <ul class="timeline-features">
+                <li>Aktif dalam proyek pengembangan perangkat lunak kampus dan studi mandiri</li>
+                <li>Riset implementasi arsitektur web performa tinggi ramah hosting statis</li>
+                <li>Membangun portfolio solusi digital terapan untuk masyarakat lokal</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Pendidikan Menengah -->
+          <div class="timeline-item reveal reveal-delay-1">
+            <div class="timeline-dot"></div>
+            <div class="timeline-card">
+              <span class="timeline-badge">2020 — 2023</span>
+              <h3 class="timeline-title">Pendidikan Menengah Atas / Kejuruan</h3>
+              <p class="timeline-subtitle">Jawa Timur, Indonesia</p>
+              <p class="timeline-desc">
+                Mendalami dasar logika matematika, pengenalan jaringan komputer, logika pemrograman prosedural, dan pembuatan halaman web dasar dengan HTML dan CSS.
+              </p>
+              <ul class="timeline-features">
+                <li>Ketertarikan awal pada eksplorasi kode pemrograman dan open source</li>
+                <li>Berbagai eksperimen antarmuka web dan otomasi komputer sederhana</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         TESTIMONIALS / ENDORSEMENTS
+         =================================================================== -->
+    <section id="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Testimoni</span>
+          <h2 class="section-title">Apresiasi & <span class="gradient-text">Kolaborasi</span></h2>
+          <p class="section-subtitle">
+            Apa yang dikatakan oleh rekan satu tim, mitra, dan dosen tentang etos kerja serta hasil karya saya.
+          </p>
+        </div>
+
+        <div class="testimonials-grid">
+          <div class="testimonial-card reveal">
+            <div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                Alfin memiliki ketekunan luar biasa dalam menyelesaikan masalah pemrograman. Kodenya terstruktur rapi, antarmuka web yang dibuat selalu modern, dan sangat cepat tanggap saat diajak berdiskusi.
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">AP</div>
+              <div>
+                <h4 class="author-name">Rekan Proyek Akademik</h4>
+                <p class="author-role">Informatika — Univ. Bhinneka PGRI</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal reveal-delay-1">
+            <div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                Sistem dashboard kasir yang dibuatkan Alfin untuk toko kami sangat membantu operasional sehari-hari. Tampilannya tidak membingungkan, loadingnya super kencang di laptop maupun tablet!
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">UM</div>
+              <div>
+                <h4 class="author-name">Pemilik UMKM Mitra</h4>
+                <p class="author-role">Pelaku Usaha Rejotangan, Tulungagung</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="testimonial-card reveal reveal-delay-2">
+            <div>
+              <div class="quote-icon">“</div>
+              <p class="testimonial-quote">
+                Kreativitas Alfin dalam mengeksplorasi teknologi web murni tanpa ketergantungan berlebih patut diacungi jempol. Portofolio ini menjadi bukti nyata kompetensi dan integritas teknisnya.
+              </p>
+            </div>
+            <div class="testimonial-author">
+              <div class="author-avatar">RD</div>
+              <div>
+                <h4 class="author-name">Mentor Web Development</h4>
+                <p class="author-role">Tech Community Jatim</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================
+         CONTACT SECTION
+         =================================================================== -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-badge">Kontak</span>
+          <h2 class="section-title">Mari Mulai <span class="gradient-text">Kolaborasi</span></h2>
+          <p class="section-subtitle">
+            Apakah Anda memiliki proyek web baru, tawaran kerja, atau sekadar ingin bertukar ide seputar teknologi? Jangan ragu untuk menghubungi saya!
+          </p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Contact Direct Channels -->
+          <div class="contact-info-wrap reveal">
+            <!-- Email -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+              <div class="contact-card-content">
+                <span>Kirim Email</span>
+                <strong>alfinprayoga.dev@gmail.com</strong>
+              </div>
+            </div>
+
+            <!-- Lokasi -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </div>
+              <div class="contact-card-content">
+                <span>Alamat Domisili</span>
+                <strong>Rejotangan, Tulungagung, Jawa Timur</strong>
+              </div>
+            </div>
+
+            <!-- Kampus -->
+            <div class="contact-card-item">
+              <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+              </div>
+              <div class="contact-card-content">
+                <span>Perguruan Tinggi</span>
+                <strong>Universitas Bhinneka PGRI</strong>
+              </div>
+            </div>
+
+            <!-- Quick WhatsApp CTA Box -->
+            <div class="wa-direct-card">
+              <h4>💬 Diskusi Cepat via WhatsApp</h4>
+              <p>Butuh respons instan untuk tawaran proyek atau konsultasi teknis?</p>
+              <button class="btn btn-whatsapp" id="btn-wa-direct">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+                Chat WhatsApp Sekarang
+              </button>
+            </div>
+          </div>
+
+          <!-- Contact Form Card -->
+          <div class="contact-form-card reveal reveal-delay-1">
+            <form id="contact-form" novalidate>
+              <div class="form-group">
+                <label for="form-name" class="form-label">Nama Lengkap</label>
+                <input type="text" id="form-name" class="form-input" placeholder="Masukkan nama Anda..." required>
+                <span class="form-error">Nama tidak boleh kosong.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-email" class="form-label">Alamat Email</label>
+                <input type="email" id="form-email" class="form-input" placeholder="nama@domain.com" required>
+                <span class="form-error">Email tidak valid.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-subject" class="form-label">Subjek Pesan</label>
+                <input type="text" id="form-subject" class="form-input" placeholder="Contoh: Tawaran Proyek Web / Diskusi..." required>
+                <span class="form-error">Subjek wajib diisi.</span>
+              </div>
+
+              <div class="form-group">
+                <label for="form-message" class="form-label">Pesan Anda</label>
+                <textarea id="form-message" class="form-textarea" placeholder="Tuliskan pesan, rincian proyek, atau pertanyaan Anda..." required></textarea>
+                <span class="form-error">Pesan minimal 10 karakter.</span>
+              </div>
+
+              <button type="submit" class="btn btn-primary" style="width: 100%;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                Kirim Pesan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================================================================
+       FOOTER
+       =================================================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo">
+            <span class="logo-badge">AP</span>
+            <span>Alfin<span class="gradient-text">.dev</span></span>
+          </a>
+          <p>
+            Portofolio profesional Muhammad Alfin Prayoga — Software & Web Developer. Dirancang dengan cinta, kode bersih, dan estetika visual modern.
+          </p>
+          <div class="hero-socials">
+            <a href="https://github.com/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
+            <a href="https://linkedin.com/in/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+            <a href="https://instagram.com/alfinprayoga" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Tautan Cepat</h4>
+          <div class="footer-links">
+            <a href="#home">Beranda</a>
+            <a href="#about">Tentang Saya</a>
+            <a href="#skills">Keahlian Teknis</a>
+            <a href="#projects">Koleksi Proyek</a>
+            <a href="#education">Riwayat Pendidikan</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-title">Informasi & Lokasi</h4>
+          <div class="footer-links">
+            <p style="color: var(--text-secondary); font-size: 0.925rem;">Rejotangan, Tulungagung<br>Jawa Timur, Indonesia</p>
+            <p style="color: var(--text-secondary); font-size: 0.925rem; margin-top: 0.5rem;">Universitas Bhinneka PGRI</p>
+            <a href="mailto:alfinprayoga.dev@gmail.com" style="margin-top: 0.5rem; color: var(--accent-secondary);">alfinprayoga.dev@gmail.com</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Muhammad Alfin Prayoga. Hak cipta dilindungi undang-undang.</p>
+        <p>Dibangun dengan Vanilla HTML5, CSS3, & JavaScript untuk GitHub Pages.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Back to Top Button -->
+  <button class="back-to-top" id="back-to-top" aria-label="Kembali ke Bagian Atas">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+  </button>
+
+  <!-- ===================================================================
+       PROJECT DETAIL MODAL
+       =================================================================== -->
+  <div class="modal-overlay" id="project-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close-btn" id="modal-close-btn" aria-label="Tutup Detail Proyek">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+
+      <div class="modal-img-wrap">
+        <img id="modal-img" src="" alt="Screenshot Proyek">
+      </div>
+
+      <div class="modal-body">
+        <h3 class="modal-title" id="modal-title">Judul Proyek</h3>
+        
+        <div class="modal-tags" id="modal-tags">
+          <!-- Populated by JS -->
+        </div>
+
+        <p class="modal-desc" id="modal-desc">
+          Deskripsi detail proyek.
+        </p>
+
+        <h4 class="modal-section-title">Fitur & Arsitektur Utama</h4>
+        <ul class="modal-features-list" id="modal-features">
+          <!-- Populated by JS -->
+        </ul>
+
+        <div class="modal-actions">
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm" id="modal-demo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            Live Demo
+          </a>
+          <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-sm" id="modal-github">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+            Repository GitHub
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Scripts -->
+  <script src="js/particles.js"></script>
+  <script src="js/typing.js"></script>
+  <script src="js/projects.js"></script>
+  <script src="js/form.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
