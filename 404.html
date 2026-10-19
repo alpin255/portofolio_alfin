@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 &mdash; Halaman Tidak Ditemukan | Muhammad Alfin Prayoga</title>
+  
+  <meta name="robots" content="noindex, follow">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="css/style.css?v=3.0">
+  <style>
+    .error-viewport {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      background-color: var(--bg-primary);
+      position: relative;
+    }
+    .error-card {
+      max-width: 640px;
+      width: 100%;
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+    .error-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.85rem 1.25rem;
+      background: var(--bg-card);
+      border-bottom: 1px solid var(--border-subtle);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+    .error-traffic-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .traffic-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border-strong);
+    }
+    .traffic-dot.alert {
+      background: #ef4444;
+    }
+    .error-body {
+      padding: 2.5rem 2rem;
+    }
+    .error-code-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: var(--accent-primary);
+      background: var(--accent-subtle);
+      padding: 0.35rem 0.75rem;
+      border-radius: var(--radius-xs);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      margin-bottom: 1.5rem;
+    }
+    .error-title {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }
+    .error-title span {
+      color: var(--text-muted);
+    }
+    .error-desc {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+    }
+    .error-console {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-xs);
+      padding: 1rem 1.25rem;
+      font-family: var(--font-mono);
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+    .console-line {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .console-prefix {
+      color: var(--accent-primary);
+      user-select: none;
+    }
+    .console-msg {
+      color: var(--text-secondary);
+    }
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-viewport">
+    <div class="error-card">
+      <div class="error-header">
+        <div class="error-traffic-dots">
+          <span class="traffic-dot alert"></span>
+          <span class="traffic-dot"></span>
+          <span class="traffic-dot"></span>
+        </div>
+        <span>DIAGNOSTIC // 404_PAGE_FAULT</span>
+        <span>SYS_STATUS: 0x0004</span>
+      </div>
+
+      <div class="error-body">
+        <div class="error-code-badge">
+          <span>// STATUS 404</span>
+          <span>&bull;</span>
+          <span>ENDPOINT NOT REGISTERED</span>
+        </div>
+
+        <h1 class="error-title">
+          Tautan Terputus. <span>Rute Tidak Ditemukan.</span>
+        </h1>
+
+        <p class="error-desc">
+          Halaman atau berkas yang Anda cari tidak tersedia di server ini. Seperti memeriksa siklus bahan bakar di ruang mesin mobil, mungkin tautan URL salah ketik atau telah dipindahkan ke repositori baru.
+        </p>
+
+        <div class="error-console">
+          <div class="console-line">
+            <span class="console-prefix">&gt;</span>
+            <span class="console-msg">GET /requested_route HTTP/1.1</span>
+          </div>
+          <div class="console-line">
+            <span class="console-prefix">&gt;</span>
+            <span class="console-msg">Host: alfinprayoga.github.io</span>
+          </div>
+          <div class="console-line">
+            <span class="console-prefix">&gt;</span>
+            <span class="console-msg" style="color: #ef4444;">Result: 404 NOT_FOUND — Execution redirected.</span>
+          </div>
+        </div>
+
+        <div class="error-actions">
+          <a href="index.html" class="btn btn-primary">
+            <span>Kembali ke Beranda Utama</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+          </a>
+          <a href="index.html#projects" class="btn btn-secondary">
+            <span>Lihat Arsip Proyek</span>
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

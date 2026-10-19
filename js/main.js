@@ -46,12 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Back to top visibility
-    if (scrollPos > 500) {
-      backToTopBtn.classList.add('visible');
+    if (scrollPos > 450) {
+      if (backToTopBtn) backToTopBtn.classList.add('visible');
     } else {
-      backToTopBtn.classList.remove('visible');
+      if (backToTopBtn) backToTopBtn.classList.remove('visible');
     }
-  });
+  }, { passive: true });
 
   if (backToTopBtn) {
     backToTopBtn.addEventListener('click', () => {
@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    rootMargin: '-20% 0px -70% 0px'
+    rootMargin: '-20% 0px -65% 0px'
   });
 
   sections.forEach(sec => sectionObserver.observe(sec));
@@ -124,7 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }, {
-    threshold: 0.15
+    threshold: 0.12
   });
 
   revealElements.forEach(el => revealObserver.observe(el));
@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
         animateCounters();
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.3 });
 
   const statsSection = document.getElementById('about');
   if (statsSection) statsObserver.observe(statsSection);
@@ -167,7 +167,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ===================================================================
-  // 7. SKILL CATEGORY TABS & PROGRESS BARS
+  // 7. SKILL CATEGORY TABS
   // ===================================================================
   const skillTabs = document.querySelectorAll('.skills-tabs .tab-btn');
   const skillCards = document.querySelectorAll('.skill-card');
@@ -181,14 +181,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
       skillCards.forEach(card => {
         if (category === 'all' || card.getAttribute('data-category') === category) {
-          card.style.display = 'block';
+          card.style.display = '';
           setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'translateY(0)';
           }, 20);
         } else {
           card.style.opacity = '0';
-          card.style.transform = 'translateY(15px)';
+          card.style.transform = 'translateY(12px)';
           setTimeout(() => {
             card.style.display = 'none';
           }, 200);
@@ -197,19 +197,4 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Animate skill progress bars on scroll
-  const skillBars = document.querySelectorAll('.skill-bar-fill');
-  const skillsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        skillBars.forEach(bar => {
-          const width = bar.getAttribute('data-width');
-          bar.style.width = width + '%';
-        });
-      }
-    });
-  }, { threshold: 0.2 });
-
-  const skillsSection = document.getElementById('skills');
-  if (skillsSection) skillsObserver.observe(skillsSection);
 });

@@ -9,7 +9,7 @@ const projectsData = [
     title: 'E-Pelanggaran SMKN 1 Rejotangan',
     category: 'fullstack',
     categoryLabel: 'Magang & Fullstack Web',
-    image: 'assets/images/project-academic.jpg',
+    image: 'assets/images/project-epelanggaran-real.jpg',
     shortDesc: 'Sistem manajemen kedisiplinan dan rekam jejak poin pelanggaran siswa berbasis web yang dibangun selama masa magang di SMKN 1 Rejotangan.',
     fullDesc: 'Sistem Informasi E-Pelanggaran SMKN 1 Rejotangan dikembangkan untuk mendigitalkan proses pencatatan tata tertib siswa yang sebelumnya dilakukan secara konvensional. Dibangun dengan backend Laravel yang tangguh dan antarmuka reaktif Vue 3, sistem ini memungkinkan Guru BK, Tim Kesiswaan, dan Wali Kelas mencatat dan memonitor akumulasi poin pelanggaran siswa secara real-time, serta mencetak Surat Panggilan Orang Tua secara otomatis.',
     features: [
@@ -28,7 +28,7 @@ const projectsData = [
     title: 'Sistem Kasir POS Toko Kelontong',
     category: 'webapp',
     categoryLabel: 'Java Desktop & Production',
-    image: 'assets/images/project-pos.jpg',
+    image: 'assets/images/project-poskasir-real.jpg',
     shortDesc: 'Aplikasi kasir Point of Sale (POS) berbasis Java dan MySQL yang telah diimplementasikan dan digunakan aktif di beberapa toko kelontong di Rejotangan.',
     fullDesc: 'Aplikasi kasir desktop yang dibangun menggunakan Java dan database relasional MySQL untuk membantu para pemilik toko kelontong di daerah Rejotangan dan sekitarnya. Sistem ini dirancang untuk operasional harian yang cepat, stabil, tanpa ketergantungan koneksi internet, serta mendukung pemindaian barcode barang dan pencetakan struk thermal.',
     features: [
@@ -46,15 +46,15 @@ const projectsData = [
     id: 'desa-digital',
     title: 'Desa Digital Rejotangan',
     category: 'webapp',
-    categoryLabel: 'Public Service Portal',
-    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=1200&q=80',
-    shortDesc: 'Portal pelayanan publik dan administrasi surat menyurat online warga Desa Rejotangan, Tulungagung Jawa Timur.',
-    fullDesc: 'Inisiatif proyek web pelayanan masyarakat yang memungkinkan warga desa mengajukan surat pengantar (SKCK, KTP, Domisili) secara daring tanpa perlu antre di kantor kelurahan, lengkap dengan tracking status pengajuan dan direktori UMKM lokal.',
+    categoryLabel: 'Portal Layanan Publik',
+    image: 'assets/images/project-desa.jpg',
+    shortDesc: 'Portal pelayanan publik dan administrasi surat-menyurat online warga Desa Rejotangan, Tulungagung.',
+    fullDesc: 'Inisiatif proyek web pelayanan masyarakat yang memungkinkan warga desa mengajukan permohonan surat pengantar kependudukan (SKCK, KTP, Domisili) secara daring tanpa perlu antre di kantor kelurahan, dilengkapi tracking nomor tiket permohonan dan direktori UMKM warga.',
     features: [
-      'Pengajuan berkas administrasi kependudukan online dengan tanda tangan digital',
-      'Sistem tracking progres berkas permohonan via nomor tiket SMS/WA',
-      'Etalase produk unggulan UMKM khas Rejotangan Tulungagung',
-      'Peta interaktif sebaran fasilitas desa dan info tanggap darurat'
+      'Pengajuan berkas permohonan administrasi kependudukan online dengan verifikasi data',
+      'Pelacakan status pemrosesan berkas secara real-time via nomor tiket identifikasi',
+      'Direktori UMKM dan potensi ekonomi warga Desa Rejotangan',
+      'Peta geospasial sebaran fasilitas pelayanan umum dan tanggap darurat'
     ],
     techs: ['HTML5 Semantic', 'Modern CSS', 'Vanilla JavaScript', 'OpenStreetMap API'],
     demoUrl: 'https://github.com/alfinprayoga',
@@ -62,19 +62,19 @@ const projectsData = [
   },
   {
     id: 'nusantara-mart',
-    title: 'Nusantara Mart E-Commerce',
+    title: 'Nusantara Mart Platform',
     category: 'fullstack',
-    categoryLabel: 'E-Commerce Platform',
-    image: 'https://images.unsplash.com/photo-1557821552-17105176677c?auto=format&fit=crop&w=1200&q=80',
-    shortDesc: 'Platform toko online modern dengan keranjang belanja interaktif, checkout multipayment, dan ongkir otomatis.',
-    fullDesc: 'Solusi marketplace lokal yang mengintegrasikan kalkulasi tarif ekspedisi otomatis (JNE, SiCepat, POS) ke seluruh Indonesia serta simulasi pembayaran QRIS dan Virtual Account perbankan.',
+    categoryLabel: 'E-Commerce Engine',
+    image: 'assets/images/project-ecommerce.jpg',
+    shortDesc: 'Platform toko online dengan keranjang belanja persisten, checkout multi-kurir, dan kalkulasi ongkir otomatis.',
+    fullDesc: 'Arsitektur e-commerce yang mengintegrasikan pengecekan tarif ongkir ekspedisi domestik secara otomatis ke seluruh kota di Indonesia, manajemen state keranjang belanja persisten di peramban, serta alur checkout yang terstandarisasi.',
     features: [
-      'Katalog interaktif dengan filter multi-kategori dan live search',
-      'Shopping cart state management dengan persistent localStorage',
-      'Integrasi kalkulator tarif pengiriman otomatis',
-      'Checkout flow ramah pengguna dengan konfirmasi pesanan otomatis'
+      'Katalog interaktif dengan live filtering multi-kategori tanpa keterlambatan re-render',
+      'Manajemen status keranjang belanja persisten memanfaatkan localStorage',
+      'Integrasi endpoint kalkulator tarif kurir pengiriman (JNE, SiCepat, POS)',
+      'Alur checkout dengan kalkulasi total biaya dan verifikasi data transaksi'
     ],
-    techs: ['HTML5', 'CSS Grid/Flexbox', 'JavaScript', 'Fetch API', 'Payment Gateway API'],
+    techs: ['HTML5', 'CSS Grid/Flexbox', 'JavaScript ES6+', 'Fetch API', 'Local Storage'],
     demoUrl: 'https://github.com/alfinprayoga',
     githubUrl: 'https://github.com/alfinprayoga/nusantara-mart'
   },
@@ -82,15 +82,15 @@ const projectsData = [
     id: 'devnote-studio',
     title: 'DevNote Code & Markdown Studio',
     category: 'frontend',
-    categoryLabel: 'Frontend Tool',
-    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1200&q=80',
-    shortDesc: 'Aplikasi editor Markdown & Code Snippet real-time dengan syntax highlighting, export PDF, dan auto-save.',
-    fullDesc: 'Aplikasi produktivitas berbasis web untuk developer mencatat dokumentasi, menyimpan potongan kode penting (snippets), dan mengekspor dokumen ke berbagai format dengan render Markdown yang instan dan bebas lag.',
+    categoryLabel: 'Perangkat Rekayasa Web',
+    image: 'assets/images/project-devnote.jpg',
+    shortDesc: 'Aplikasi editor Markdown & Code Snippet real-time dengan syntax highlighting, ekspor PDF, dan penyimpanan offline.',
+    fullDesc: 'Alat produktivitas berbasis peramban untuk mencatat dokumentasi teknis, menyimpan potongan kode penting (snippets), dan mengekspor catatan ke berbagai format dokumen secara instan tanpa lag.',
     features: [
-      'Split-screen live Markdown preview dengan MathJax & KaTeX math rendering',
+      'Split-screen live Markdown preview dengan render token kilat',
       'Syntax highlighter untuk 30+ bahasa pemrograman',
-      'Mode offline tanpa koneksi internet (PWA Ready)',
-      'Ekspor instan ke HTML, Markdown, dan file PDF'
+      'Mode offline tanpa dependensi internet (PWA Ready)',
+      'Ekspor instan dokumen ke format HTML, Markdown, dan berkas PDF'
     ],
     techs: ['Vanilla JS', 'CSS3 Variables', 'Highlight.js', 'Marked.js', 'LocalStorage'],
     demoUrl: 'https://github.com/alfinprayoga',
@@ -98,19 +98,19 @@ const projectsData = [
   },
   {
     id: 'personal-portfolio',
-    title: 'Alfin Prayoga Portfolio v1',
+    title: 'Portofolio Muhammad Alfin Prayoga',
     category: 'frontend',
-    categoryLabel: 'Web Portfolio',
-    image: 'assets/images/project-academic.jpg',
-    shortDesc: 'Website portofolio profesional ultra-fast, 100% vanilla stack tanpa dependency berat, siap hosting di GitHub Pages.',
-    fullDesc: 'Website personal branding yang sedang Anda kunjungi saat ini! Dirancang dengan standar industri internasional: arsitektur semantic HTML5, glassmorphism design tokens, micro-animations, sistem dark/light theme, dan optimasi Lighthouse 95+.',
+    categoryLabel: 'Portofolio & Rekayasa Web',
+    image: 'assets/images/project-portfolio.jpg',
+    shortDesc: 'Website portofolio rekayasa mandiri ultra-cepat, 100% stack vanilla tanpa dependensi tambun.',
+    fullDesc: 'Website personal yang sedang Anda telaah saat ini. Dirancang dengan disiplin rekayasa front-end tingkat tinggi: arsitektur semantic HTML5, token sistem DevSync, micro-interactions berbasis hardware transform, dan audit Lighthouse 95+ di semua indikator.',
     features: [
-      '100% Pure HTML, CSS, dan Vanilla JavaScript tanpa bloatware',
-      'Dukungan Dark Mode dan Light Mode instan dengan local storage sync',
-      'Interactive Canvas Particle Constellation background',
-      'Fully responsive di semua layar (Smartphone, Tablet, Laptop, Ultrawide)'
+      '100% Pure HTML, CSS3 Tokens, dan JavaScript ES6+ tanpa pustaka eksternal berat',
+      'Sinkronisasi tema Gelap dan Terang instan dengan persistensi preferensi sistem',
+      'Tata letak asimetris terukur terinspirasi arsitektur studio DevSync',
+      'Desain responsif tanpa kompromi mulai dari viewport 360px hingga ultrawide'
     ],
-    techs: ['HTML5 Semantic', 'Modern CSS Glassmorphism', 'Vanilla JS (ES6+)', 'GitHub Pages'],
+    techs: ['HTML5 Semantic', 'DevSync CSS Tokens', 'Vanilla JS (ES6+)', 'GitHub Pages'],
     demoUrl: '#',
     githubUrl: 'https://github.com/alfinprayoga/portofolio'
   }
@@ -171,15 +171,16 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       document.querySelectorAll('.project-card.reveal').forEach(el => el.classList.add('active'));
     }, 50);
-
-    // Attach click listeners to open modal
-    document.querySelectorAll('.btn-open-modal').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        const id = e.currentTarget.getAttribute('data-id');
-        openModal(id);
-      });
-    });
   }
+
+  // Event delegation for opening modal from any project button (including flagship showcases)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-open-modal');
+    if (btn) {
+      const id = btn.getAttribute('data-id');
+      if (id) openModal(id);
+    }
+  });
 
   // Filter Button Clicks
   filterBtns.forEach(btn => {
@@ -229,6 +230,9 @@ document.addEventListener('DOMContentLoaded', () => {
     modalOverlay.classList.add('open');
     document.body.style.overflow = 'hidden';
   }
+
+  window.openProjectModal = openModal;
+  window.closeProjectModal = closeModal;
 
   function closeModal() {
     if (!modalOverlay) return;

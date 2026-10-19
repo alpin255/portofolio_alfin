@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>Nusantara Mart — Modern E-Commerce Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #090e17;
+      color: #f1f5f9;
+      width: 1280px;
+      height: 800px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Top Promo Bar */
+    .promo-bar {
+      background: #0284c7;
+      color: white;
+      text-align: center;
+      padding: 0.35rem;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+    }
+
+    /* Main Navbar */
+    .navbar {
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 0.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .brand-box {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .brand-icon {
+      width: 34px;
+      height: 34px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 800;
+      font-size: 1rem;
+    }
+    .brand-text h1 { font-size: 1.1rem; font-weight: 800; color: #f8fafc; }
+    .brand-text span { font-size: 0.65rem; color: #38bdf8; font-weight: 700; }
+
+    .search-container {
+      flex-grow: 1;
+      max-width: 500px;
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.45rem 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #94a3b8;
+      font-size: 0.8rem;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+    .cart-btn {
+      position: relative;
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 0.45rem 0.85rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
+    }
+    .cart-count {
+      background: #f43f5e;
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: grid;
+      place-items: center;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+
+    /* Workspace */
+    .market-body {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 1.8fr 1.2fr;
+      padding: 1.25rem 2rem;
+      gap: 1.5rem;
+      overflow: hidden;
+    }
+
+    /* Left: Product Catalog */
+    .catalog-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      overflow-y: auto;
+    }
+    .catalog-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .catalog-header h2 { font-size: 0.95rem; font-weight: 700; color: #f8fafc; }
+    .cat-pills { display: flex; gap: 0.5rem; }
+    .cat-pill {
+      background: #111a2e;
+      border: 1px solid #1e293b;
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      color: #94a3b8;
+      font-weight: 600;
+    }
+    .cat-pill.active { background: #0284c7; color: white; border-color: #38bdf8; }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .product-card {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      position: relative;
+    }
+    .badge-discount {
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+      background: rgba(244, 63, 94, 0.15);
+      color: #fda4af;
+      border: 1px solid rgba(244, 63, 94, 0.3);
+      padding: 0.15rem 0.45rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 700;
+    }
+    .product-thumb {
+      background: #0b1120;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      height: 100px;
+      display: grid;
+      place-items: center;
+      color: #38bdf8;
+    }
+    .product-card h3 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
+    .rating-row {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.675rem;
+      color: #94a3b8;
+    }
+    .stars { color: #f59e0b; }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.25rem;
+    }
+    .price { font-size: 1rem; font-weight: 800; color: #38bdf8; font-family: 'JetBrains Mono', monospace; }
+    .btn-add {
+      background: #1e293b;
+      border: 1px solid #334155;
+      color: #f8fafc;
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    /* Right: Checkout & Cart Drawer */
+    .checkout-drawer {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 25px rgba(0,0,0,0.4);
+    }
+    .drawer-header {
+      background: #0f172a;
+      border-bottom: 1px solid #1f2937;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .drawer-header h3 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
+    .cart-summary-tag { font-size: 0.675rem; color: #38bdf8; font-weight: 600; }
+
+    .drawer-content {
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+
+    /* Cart Items Mini List */
+    .mini-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      padding-bottom: 0.6rem;
+      border-bottom: 1px solid #1e293b;
+    }
+    .mini-name { color: #e2e8f0; font-weight: 600; }
+    .mini-qty { color: #64748b; font-size: 0.675rem; }
+    .mini-price { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #f8fafc; }
+
+    /* Shipping Courier Box */
+    .shipping-box {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .shipping-title { font-size: 0.7rem; font-weight: 700; color: #94a3b8; text-transform: uppercase; }
+    .courier-select {
+      background: #111827;
+      border: 1px solid #0284c7;
+      border-radius: 4px;
+      padding: 0.4rem 0.6rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.725rem;
+    }
+    .courier-name { font-weight: 700; color: #f8fafc; }
+    .courier-price { font-family: 'JetBrains Mono', monospace; color: #38bdf8; font-weight: 700; }
+
+    /* QRIS Payment Box */
+    .qris-box {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .qris-qr {
+      width: 60px;
+      height: 60px;
+      background: white;
+      border-radius: 4px;
+      display: grid;
+      place-items: center;
+      padding: 3px;
+    }
+    .qris-info h4 { font-size: 0.75rem; font-weight: 700; color: #f8fafc; }
+    .qris-info p { font-size: 0.65rem; color: #94a3b8; }
+    .qris-banks { display: flex; gap: 0.35rem; margin-top: 0.25rem; font-size: 0.6rem; color: #38bdf8; font-weight: 700; }
+
+    /* Grand Total Footer */
+    .drawer-footer {
+      background: #090e17;
+      border-top: 1px solid #1f2937;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .total-lbl { font-size: 0.75rem; font-weight: 700; color: #94a3b8; }
+    .total-val { font-size: 1.35rem; font-weight: 800; color: #38bdf8; font-family: 'JetBrains Mono', monospace; }
+    .btn-checkout {
+      background: #0284c7;
+      border: 1px solid #38bdf8;
+      color: white;
+      padding: 0.6rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Banner -->
+  <div class="promo-bar">
+    GRATIS ONGKIR SE-JAWA TIMUR &bull; DUKUNGAN MULTI-KURIR RAJAONGKIR (JNE, SICEPAT, POS INDONESIA)
+  </div>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="brand-box">
+      <div class="brand-icon">NM</div>
+      <div class="brand-text">
+        <h1>Nusantara Mart</h1>
+        <span>INDONESIAN COMMERCE ENGINE</span>
+      </div>
+    </div>
+
+    <div class="search-container">
+      <svg width="15" height="15" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <span>Cari produk sembako, rempah, kopi lokal...</span>
+    </div>
+
+    <div class="nav-actions">
+      <button class="cart-btn">
+        <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        <span>Keranjang</span>
+        <span class="cart-count">3</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Workspace -->
+  <main class="market-body">
+    <!-- Left Catalog -->
+    <div class="catalog-panel">
+      <div class="catalog-header">
+        <h2>Katalog Komoditas Pilihan</h2>
+        <div class="cat-pills">
+          <span class="cat-pill active">Semua</span>
+          <span class="cat-pill">Sembako</span>
+          <span class="cat-pill">Kopi Nusantara</span>
+          <span class="cat-pill">Herbal</span>
+        </div>
+      </div>
+
+      <div class="product-grid">
+        <div class="product-card">
+          <span class="badge-discount">-15%</span>
+          <div class="product-thumb">
+            <svg width="36" height="36" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+          </div>
+          <h3>Kopi Robusta Dampit 250g</h3>
+          <div class="rating-row">
+            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+            <span>5.0 (850 ulasan)</span>
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 45.000</span>
+            <button class="btn-add">+ Masuk</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <span class="badge-discount">TERLARIS</span>
+          <div class="product-thumb">
+            <svg width="36" height="36" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          </div>
+          <h3>Madu Hutan Murni 500ml</h3>
+          <div class="rating-row">
+            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+            <span>4.9 (1.2k terjual)</span>
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 85.000</span>
+            <button class="btn-add">+ Masuk</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <svg width="36" height="36" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+          </div>
+          <h3>Sambal Bawang Khas Jatim 135g</h3>
+          <div class="rating-row">
+            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+            <span>4.8 (3.4k ulasan)</span>
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 28.500</span>
+            <button class="btn-add">+ Masuk</button>
+          </div>
+        </div>
+
+        <div class="product-card">
+          <div class="product-thumb">
+            <svg width="36" height="36" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Beras Pandan Wangi 5kg</h3>
+          <div class="rating-row">
+            <span class="stars">&starf;&starf;&starf;&starf;&starf;</span>
+            <span>4.9 (520 ulasan)</span>
+          </div>
+          <div class="price-row">
+            <span class="price">Rp 92.000</span>
+            <button class="btn-add">+ Masuk</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Checkout Drawer -->
+    <div class="checkout-drawer">
+      <div class="drawer-header">
+        <h3>Ringkasan Checkout &amp; Ongkir</h3>
+        <span class="cart-summary-tag mono">API RajaOngkir Sync</span>
+      </div>
+
+      <div class="drawer-content">
+        <!-- Item 1 -->
+        <div class="mini-item">
+          <div>
+            <div class="mini-name">Madu Hutan Murni 500ml</div>
+            <div class="mini-qty">1 Pcs &bull; Botol Kaca</div>
+          </div>
+          <div class="mini-price">Rp 85.000</div>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="mini-item">
+          <div>
+            <div class="mini-name">Kopi Robusta Dampit 250g</div>
+            <div class="mini-qty">1 Pcs &bull; Fine Grind</div>
+          </div>
+          <div class="mini-price">Rp 45.000</div>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="mini-item">
+          <div>
+            <div class="mini-name">Sambal Bawang Khas Jatim</div>
+            <div class="mini-qty">1 Pcs &bull; Pedas Ekstra</div>
+          </div>
+          <div class="mini-price">Rp 28.500</div>
+        </div>
+
+        <!-- Shipping Courier Selector -->
+        <div class="shipping-box">
+          <div class="shipping-title">Ekspedisi (Tujuan: Tulungagung)</div>
+          <div class="courier-select">
+            <div>
+              <div class="courier-name">JNE Regular (REG)</div>
+              <div style="font-size:0.65rem; color:#94a3b8;">Estimasi: 2-3 Hari Kerja</div>
+            </div>
+            <div class="courier-price">Rp 18.000</div>
+          </div>
+        </div>
+
+        <!-- QRIS Payment Box -->
+        <div class="qris-box">
+          <div class="qris-qr">
+            <!-- Simulated QR Pattern -->
+            <svg width="54" height="54" viewBox="0 0 54 54">
+              <rect width="54" height="54" fill="#000"/>
+              <rect x="4" y="4" width="18" height="18" fill="#fff"/>
+              <rect x="7" y="7" width="12" height="12" fill="#000"/>
+              <rect x="32" y="4" width="18" height="18" fill="#fff"/>
+              <rect x="35" y="7" width="12" height="12" fill="#000"/>
+              <rect x="4" y="32" width="18" height="18" fill="#fff"/>
+              <rect x="7" y="35" width="12" height="12" fill="#000"/>
+              <rect x="25" y="25" width="6" height="6" fill="#fff"/>
+            </svg>
+          </div>
+          <div class="qris-info">
+            <h4>QRIS Realtime Settlement</h4>
+            <p>Scan otomatis dengan aplikasi mobile banking apa saja.</p>
+            <div class="qris-banks">
+              <span>BCA</span> &bull; <span>MANDIRI</span> &bull; <span>BRI</span> &bull; <span>GOPAY</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="drawer-footer">
+        <div class="total-row">
+          <span class="total-lbl">Total Pembayaran:</span>
+          <span class="total-val">Rp 176.500</span>
+        </div>
+        <button class="btn-checkout">
+          <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Bayar Sekarang (QRIS)
+        </button>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

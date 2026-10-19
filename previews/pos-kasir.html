@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>Sistem Kasir POS Toko Kelontong — Desktop Application</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0f141c;
+      color: #f1f5f9;
+      width: 1280px;
+      height: 800px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Window Titlebar (Desktop App Feel) */
+    .app-titlebar {
+      height: 38px;
+      background: #090d14;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1rem;
+      user-select: none;
+    }
+    .titlebar-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .window-dots {
+      display: flex;
+      gap: 6px;
+    }
+    .window-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+    }
+    .dot-close { background: #ef4444; }
+    .dot-min { background: #eab308; }
+    .dot-max { background: #22c55e; }
+    .titlebar-title {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .db-status {
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 0.1rem 0.5rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+    }
+
+    /* POS Header */
+    .pos-header {
+      background: #111827;
+      border-bottom: 1px solid #1f2937;
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .store-info h1 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+    .store-info p {
+      font-size: 0.725rem;
+      color: #94a3b8;
+    }
+    .pos-session-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 0.75rem;
+    }
+    .meta-box {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .meta-lbl { font-size: 0.65rem; color: #64748b; text-transform: uppercase; font-weight: 600; }
+    .meta-val { color: #38bdf8; font-weight: 600; }
+
+    /* Scan Bar */
+    .scan-bar {
+      background: #0b0f17;
+      padding: 0.75rem 1.5rem;
+      border-bottom: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .barcode-input-wrapper {
+      flex-grow: 1;
+      display: flex;
+      align-items: center;
+      background: #111827;
+      border: 2px solid #0284c7;
+      border-radius: 6px;
+      padding: 0.6rem 1rem;
+      gap: 0.75rem;
+      box-shadow: 0 0 15px rgba(2, 132, 199, 0.2);
+    }
+    .barcode-icon {
+      color: #38bdf8;
+      display: flex;
+      align-items: center;
+    }
+    .barcode-input {
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 1.1rem;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      outline: none;
+      width: 100%;
+    }
+    .scan-hint {
+      font-size: 0.725rem;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    /* POS Workspace (Split Table & Totals) */
+    .pos-body {
+      flex-grow: 1;
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 1rem;
+      padding: 1rem 1.5rem;
+      background: #0b0f17;
+      overflow: hidden;
+    }
+
+    /* Cart Table Panel */
+    .cart-panel {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .table-head {
+      background: #090d14;
+      border-bottom: 1px solid #1f2937;
+      display: grid;
+      grid-template-columns: 40px 140px 1fr 110px 70px 120px;
+      padding: 0.65rem 1rem;
+      font-size: 0.675rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .cart-items-list {
+      flex-grow: 1;
+      overflow-y: auto;
+    }
+    .cart-row {
+      display: grid;
+      grid-template-columns: 40px 140px 1fr 110px 70px 120px;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #1a2234;
+      align-items: center;
+      font-size: 0.775rem;
+      color: #e2e8f0;
+    }
+    .cart-row:hover {
+      background: rgba(56, 189, 248, 0.03);
+    }
+    .cart-row.active {
+      background: rgba(56, 189, 248, 0.08);
+      border-left: 3px solid #38bdf8;
+    }
+    .item-name { font-weight: 600; color: #f8fafc; }
+    .item-code { font-size: 0.7rem; color: #64748b; }
+    .item-qty {
+      background: #1e293b;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      text-align: center;
+      font-weight: 700;
+      color: #38bdf8;
+    }
+    .item-price, .item-subtotal {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 600;
+    }
+    .item-subtotal { color: #f8fafc; text-align: right; }
+
+    /* Totals & Payment Panel */
+    .checkout-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .grand-total-box {
+      background: linear-gradient(145deg, #0f1f38, #0a1424);
+      border: 1px solid #0284c7;
+      border-radius: 8px;
+      padding: 1.25rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      box-shadow: 0 4px 20px rgba(2, 132, 199, 0.15);
+    }
+    .gt-label { font-size: 0.75rem; font-weight: 700; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.08em; }
+    .gt-amount {
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #38bdf8;
+      font-family: 'JetBrains Mono', monospace;
+      line-height: 1.1;
+    }
+    .gt-items-count { font-size: 0.7rem; color: #94a3b8; }
+
+    .calc-box {
+      background: #111827;
+      border: 1px solid #1f2937;
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .calc-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+    .calc-row.change {
+      border-top: 1px dashed #334155;
+      padding-top: 0.65rem;
+      margin-top: 0.25rem;
+    }
+    .calc-lbl { color: #94a3b8; font-weight: 500; }
+    .calc-val { font-family: 'JetBrains Mono', monospace; font-weight: 700; color: #f8fafc; font-size: 0.95rem; }
+    .calc-change-val { font-family: 'JetBrains Mono', monospace; font-weight: 800; color: #4ade80; font-size: 1.25rem; }
+
+    /* Thermal Printer Status & Mini Receipt */
+    .thermal-box {
+      background: #090d14;
+      border: 1px solid #1f2937;
+      border-radius: 6px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .printer-status {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.7rem;
+    }
+    .printer-indicator {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #4ade80;
+      font-weight: 600;
+    }
+    .printer-dot { width: 7px; height: 7px; border-radius: 50%; background: #4ade80; }
+
+    .receipt-preview {
+      background: #ffffff;
+      color: #111111;
+      padding: 0.6rem 0.75rem;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      line-height: 1.35;
+      border: 1px solid #cbd5e1;
+    }
+    .receipt-center { text-align: center; font-weight: 700; }
+    .receipt-divider { border-bottom: 1px dashed #94a3b8; margin: 0.35rem 0; }
+
+    /* Bottom Function Keys Toolbar */
+    .function-toolbar {
+      height: 48px;
+      background: #090d14;
+      border-top: 1px solid #1f2937;
+      display: flex;
+      align-items: center;
+      padding: 0 1.5rem;
+      gap: 0.5rem;
+    }
+    .fkey-btn {
+      background: #111827;
+      border: 1px solid #1f2937;
+      padding: 0.35rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: #cbd5e1;
+    }
+    .fkey-code {
+      background: #0284c7;
+      color: white;
+      font-weight: 700;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 0.1rem 0.35rem;
+      border-radius: 3px;
+      font-size: 0.65rem;
+    }
+    .fkey-btn.btn-pay {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: white;
+      font-weight: 700;
+      margin-left: auto;
+    }
+    .fkey-btn.btn-pay .fkey-code { background: #0369a1; }
+  </style>
+</head>
+<body>
+
+  <!-- Window Titlebar -->
+  <div class="app-titlebar">
+    <div class="titlebar-left">
+      <div class="window-dots">
+        <span class="window-dot dot-close"></span>
+        <span class="window-dot dot-min"></span>
+        <span class="window-dot dot-max"></span>
+      </div>
+      <span class="titlebar-title">
+        <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        Java POS Toko Kelontong v2.4 &mdash; Rejotangan
+      </span>
+    </div>
+    <span class="db-status mono">&bull; MySQL: localhost:3306 (Koneksi Aktif)</span>
+  </div>
+
+  <!-- POS Header -->
+  <header class="pos-header">
+    <div class="store-info">
+      <h1>TOKO KELONTONG BERKAH</h1>
+      <p>Jl. Raya Pasar Rejotangan, Kec. Rejotangan, Tulungagung</p>
+    </div>
+    <div class="pos-session-meta">
+      <div class="meta-box">
+        <span class="meta-lbl">Kasir Aktif</span>
+        <span class="meta-val">Alfin Prayoga</span>
+      </div>
+      <div class="meta-box">
+        <span class="meta-lbl">Shift / Tanggal</span>
+        <span class="meta-val mono">Pagi &bull; 19/10/2026</span>
+      </div>
+      <div class="meta-box">
+        <span class="meta-lbl">No. Transaksi</span>
+        <span class="meta-val mono">TRX-20261019-0042</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Scanner Barcode Input -->
+  <div class="scan-bar">
+    <div class="barcode-input-wrapper">
+      <div class="barcode-icon">
+        <svg width="22" height="22" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 5v14M7 5v14M11 5v14M15 5v14M19 5v14M21 5v14"/></svg>
+      </div>
+      <input type="text" class="barcode-input" value="8992753123456" readonly>
+    </div>
+    <span class="scan-hint mono">Tekan [Enter] untuk tambahkan ke keranjang belanja</span>
+  </div>
+
+  <!-- Workspace Split -->
+  <main class="pos-body">
+    <!-- Cart Items Table -->
+    <div class="cart-panel">
+      <div class="table-head">
+        <span>No</span>
+        <span>Kode Barcode</span>
+        <span>Nama Barang / Deskripsi</span>
+        <span style="text-align: right;">Harga (Rp)</span>
+        <span style="text-align: center;">Qty</span>
+        <span style="text-align: right;">Subtotal (Rp)</span>
+      </div>
+      <div class="cart-items-list">
+        <div class="cart-row active">
+          <span class="mono">01</span>
+          <span class="item-code mono">8992753123456</span>
+          <span class="item-name">Minyak Goreng Tropical 2L</span>
+          <span class="item-price" style="text-align: right;">36.500</span>
+          <span class="item-qty mono">2</span>
+          <span class="item-subtotal">73.000</span>
+        </div>
+        <div class="cart-row">
+          <span class="mono">02</span>
+          <span class="item-code mono">8999999120034</span>
+          <span class="item-name">Beras Ramos Setra 5kg</span>
+          <span class="item-price" style="text-align: right;">72.000</span>
+          <span class="item-qty mono">1</span>
+          <span class="item-subtotal">72.000</span>
+        </div>
+        <div class="cart-row">
+          <span class="mono">03</span>
+          <span class="item-code mono">8998866100234</span>
+          <span class="item-name">Telur Ayam Negeri Fresh (1 kg)</span>
+          <span class="item-price" style="text-align: right;">28.000</span>
+          <span class="item-qty mono">1.5</span>
+          <span class="item-subtotal">42.000</span>
+        </div>
+        <div class="cart-row">
+          <span class="mono">04</span>
+          <span class="item-code mono">8991002103456</span>
+          <span class="item-name">Gula Pasir Putih Gulaku 1kg</span>
+          <span class="item-price" style="text-align: right;">17.500</span>
+          <span class="item-qty mono">2</span>
+          <span class="item-subtotal">35.000</span>
+        </div>
+        <div class="cart-row">
+          <span class="mono">05</span>
+          <span class="item-code mono">8992772001234</span>
+          <span class="item-name">Indomie Goreng Spesial 85g</span>
+          <span class="item-price" style="text-align: right;">3.100</span>
+          <span class="item-qty mono">10</span>
+          <span class="item-subtotal">31.000</span>
+        </div>
+        <div class="cart-row">
+          <span class="mono">06</span>
+          <span class="item-code mono">8992388102345</span>
+          <span class="item-name">Kopi Kapal Api Spesial 165g</span>
+          <span class="item-price" style="text-align: right;">14.500</span>
+          <span class="item-qty mono">1</span>
+          <span class="item-subtotal">14.500</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Summary Column -->
+    <div class="checkout-panel">
+      <!-- Grand Total -->
+      <div class="grand-total-box">
+        <span class="gt-label">Total Tagihan (Rp)</span>
+        <span class="gt-amount">267.500</span>
+        <span class="gt-items-count mono">Total: 6 Jenis Barang (17.5 Pcs)</span>
+      </div>
+
+      <!-- Payment Calculation -->
+      <div class="calc-box">
+        <div class="calc-row">
+          <span class="calc-lbl">Metode Pembayaran</span>
+          <span class="calc-val" style="color: #38bdf8;">TUNAI (CASH)</span>
+        </div>
+        <div class="calc-row">
+          <span class="calc-lbl">Jumlah Diterima (F5)</span>
+          <span class="calc-val">Rp 300.000</span>
+        </div>
+        <div class="calc-row change">
+          <span class="calc-lbl" style="font-weight: 700; color: #f8fafc;">Uang Kembalian</span>
+          <span class="calc-change-val">Rp 32.500</span>
+        </div>
+      </div>
+
+      <!-- Thermal ESC/POS Receipt Preview -->
+      <div class="thermal-box">
+        <div class="printer-status">
+          <span style="color: #94a3b8; font-weight: 600;">ESC/POS Direct Stream</span>
+          <div class="printer-indicator">
+            <span class="printer-dot"></span>
+            <span>TM-T82 READY</span>
+          </div>
+        </div>
+        <div class="receipt-preview">
+          <div class="receipt-center">TOKO KELONTONG BERKAH</div>
+          <div class="receipt-center" style="font-size:0.55rem; color:#64748b;">PASAR REJOTANGAN, TULUNGAGUNG</div>
+          <div class="receipt-divider"></div>
+          <div>TRX: TRX-20261019-0042 &bull; Kasir: Alfin</div>
+          <div class="receipt-divider"></div>
+          <div>TOTAL BELANJA : Rp 267.500</div>
+          <div>BAYAR (TUNAI): Rp 300.000</div>
+          <div>KEMBALI      : Rp  32.500</div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Bottom Function Key Shortcuts -->
+  <footer class="function-toolbar">
+    <div class="fkey-btn"><span class="fkey-code">F1</span> Cari Barang</div>
+    <div class="fkey-btn"><span class="fkey-code">F2</span> Ubah Qty</div>
+    <div class="fkey-btn"><span class="fkey-code">F3</span> Diskon</div>
+    <div class="fkey-btn"><span class="fkey-code">F4</span> Void Item</div>
+    <div class="fkey-btn"><span class="fkey-code">F6</span> QRIS Static</div>
+    <div class="fkey-btn"><span class="fkey-code">F12</span> Cetak Ulang Nota</div>
+    <div class="fkey-btn btn-pay"><span class="fkey-code">F5</span> Selesai &amp; Cetak Struk (ESC/POS)</div>
+  </footer>
+
+</body>
+</html>

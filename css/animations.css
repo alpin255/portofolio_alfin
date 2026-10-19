@@ -1,7 +1,26 @@
 /* ===================================================================
-   ANIMATIONS & KEYFRAMES
-   Smooth, Hardware-Accelerated Micro-Interactions
+   MOTION DESIGN & ANIMATION ENGINE &mdash; MUHAMMAD ALFIN PRAYOGA
+   Editorial Choreography &bull; Hardware Acceleration &bull; Zero Thrashing
    =================================================================== */
+
+/* Top Reading Scroll Progress Bar */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: var(--text-primary);
+  z-index: 10000;
+  transition: width 0.1s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+  pointer-events: none;
+}
+
+[data-theme="light"] .scroll-progress-bar {
+  background: var(--accent-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
 
 /* Typing Cursor Blink */
 @keyframes blink-cursor {
@@ -13,63 +32,102 @@
 @keyframes pulse-dot {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 0 0 var(--accent-glow);
   }
   70% {
-    transform: scale(1.1);
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0);
   }
 }
 
-/* Floating Badges */
-@keyframes float-badge {
-  0%, 100% {
-    transform: translateY(0px);
+/* ===================================================================
+   PAGE ENTRANCE CHOREOGRAPHY (Hero Sequenced Load)
+   =================================================================== */
+@keyframes hero-fade-down {
+  from {
+    opacity: 0;
+    transform: translateY(-12px);
   }
-  50% {
-    transform: translateY(-8px);
-  }
-}
-
-/* Ambient Glow Pulsing */
-@keyframes pulse-glow {
-  0%, 100% {
-    transform: scale(1) translate(0, 0);
-    opacity: 0.35;
-  }
-  50% {
-    transform: scale(1.08) translate(15px, -15px);
-    opacity: 0.5;
-  }
-}
-
-.glow-1 {
-  animation: pulse-glow 9s infinite ease-in-out;
-}
-.glow-2 {
-  animation: pulse-glow 11s infinite ease-in-out reverse;
-}
-.glow-3 {
-  animation: pulse-glow 13s infinite ease-in-out;
-}
-
-/* Toast In Animation */
-@keyframes toast-in {
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Reveal On Scroll */
+@keyframes hero-line-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@keyframes plate-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Choreographed Hero Entrance Elements */
+.hero-meta-bar {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.hero-lead-badge {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both;
+}
+
+.hero-title-sub {
+  display: block;
+  animation: hero-line-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both;
+}
+
+.hero-title-main {
+  display: block;
+  animation: hero-line-reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both;
+}
+
+.hero-specialty {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.42s both;
+}
+
+.hero-manifesto {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.52s both;
+}
+
+.hero-actions {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.62s both;
+}
+
+.hero-channels {
+  animation: hero-fade-down 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.72s both;
+}
+
+.plate-wrapper {
+  animation: plate-enter 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both;
+}
+
+/* ===================================================================
+   SCROLL REVEAL ANIMATIONS (Smooth Staggered Transition)
+   =================================================================== */
 .reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(24px);
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
   will-change: opacity, transform;
 }
 
@@ -79,33 +137,69 @@
 }
 
 .reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.3s; }
-.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-2 { transition-delay: 0.18s; }
+.reveal-delay-3 { transition-delay: 0.26s; }
+.reveal-delay-4 { transition-delay: 0.34s; }
 
-/* Shimmer Light Effect for Project Cards */
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+/* Interactive Card Glare (Subtle Architectural Highlight) */
+.card-glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: inherit;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
 }
 
-/* Spinner for Form Submit Button */
-.spinner {
-  width: 18px;
-  height: 18px;
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  border-top-color: #ffffff;
+/* Tactile Ripple Wave on Click */
+.ripple-wave {
+  position: absolute;
   border-radius: 50%;
-  animation: spin 0.8s linear infinite;
-  display: inline-block;
+  transform: scale(0);
+  animation: ripple-anim 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0.05) 60%, transparent 100%);
+  pointer-events: none;
+  z-index: 10;
 }
 
-@keyframes spin {
+@keyframes ripple-anim {
   to {
-    transform: rotate(360deg);
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* ===================================================================
+   PREFERS REDUCED MOTION (Strict Accessibility Compliance)
+   =================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .hero-meta-bar,
+  .hero-lead-badge,
+  .hero-title-sub,
+  .hero-title-main,
+  .hero-specialty,
+  .hero-manifesto,
+  .hero-actions,
+  .hero-channels,
+  .plate-wrapper {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
   }
 }

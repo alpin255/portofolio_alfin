@@ -9,15 +9,16 @@ Website portofolio modern berkinerja tinggi yang dibangun menggunakan **100% Pur
 
 ## ✨ Fitur Unggulan
 
-- 💎 **Modern Glassmorphism UI**: Antarmuka visual berstandar industri dengan aksen gradien neon (Indigo & Cyan) serta efek kaca blur modern.
+- 💎 **Clean Engineering Aesthetic**: Antarmuka visual berstandar industri dengan palet gelap obsidian & titanium yang elegan, tipografi tajam, dan grid teknikal halus tanpa efek murahan.
 - 🌓 **Dark & Light Mode Switcher**: Dukungan tema gelap dan terang instan yang otomatis tersimpan di `localStorage` peramban.
-- 🌌 **Interactive Particle Network**: Latar belakang kanvas partikel konstelasi interaktif yang merespons pergerakan kursor pengguna.
+- 🌌 **Subtle Ambient Backdrop**: Latar belakang ambient partikel halus dan dot-matrix grid terstruktur yang profesional.
 - ⌨️ **Dynamic Typewriter Subtitle**: Animasi teks ketik halus pada hero section yang berganti otomatis.
 - 💼 **Interactive Projects Showcase**:
   - Filter proyek berdasarkan kategori (*All, Web App, Fullstack, Frontend*).
   - Modal pop-up interaktif untuk melihat detail lengkap, arsitektur, dan tautan live demo / GitHub.
-- 📊 **Animated Stats & Skill Progress**: Penghitung angka otomatis dan meteran keahlian teknis saat digulir ke viewport.
-- 📜 **Education & Career Timeline**: Garis waktu akademik rapi yang menampilkan studi di Universitas Bhinneka PGRI.
+- 📊 **Production-Ready Tech Competency**: Pemetaan keahlian berbasis kapabilitas nyata (Laravel, Vue 3, Java Desktop POS, ESC/POS hardware) tanpa persentase artifisial.
+- 📜 **Education & Career Timeline**: Garis waktu akademik rapi yang menampilkan studi di Universitas Bhinneka PGRI dan latar belakang kejuruan di SMKN 1 Rejotangan (TKR).
+- 🧭 **Engineering Principles & Work Ethic**: Filosofi kerja teruji (analisis troubleshooting akar masalah dari dunia otomotif, utilitas lapangan nyata, dan arsitektur bebas bloat).
 - 💬 **Direct WhatsApp & Interactive Form**:
   - Tombol pintas chat WhatsApp otomatis dengan template pesan ramah klien.
   - Formulir kontak dengan validasi langsung di sisi klien dan notifikasi toast.

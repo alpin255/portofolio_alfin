@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>Desa Digital Rejotangan — Portal Layanan Publik Mandiri</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0d131f;
+      color: #f1f5f9;
+      width: 1280px;
+      height: 800px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+
+    /* Government Header */
+    .civic-topbar {
+      background: #090e17;
+      border-bottom: 1px solid #1e293b;
+      padding: 0.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.7rem;
+      color: #94a3b8;
+    }
+    .civic-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .seal-dot { width: 8px; height: 8px; border-radius: 50%; background: #38bdf8; }
+
+    .main-nav {
+      background: #0f172a;
+      border-bottom: 1px solid #1e293b;
+      padding: 0.85rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      font-weight: 800;
+      color: white;
+      font-size: 1.1rem;
+    }
+    .brand-title h1 {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #f8fafc;
+      letter-spacing: -0.01em;
+    }
+    .brand-title p {
+      font-size: 0.675rem;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .nav-links a { color: #94a3b8; text-decoration: none; }
+    .nav-links a.active { color: #38bdf8; }
+    .btn-apply {
+      background: #0284c7;
+      color: white;
+      padding: 0.45rem 1rem;
+      border-radius: 6px;
+      font-size: 0.775rem;
+      font-weight: 700;
+      border: none;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Workspace */
+    .portal-body {
+      flex-grow: 1;
+      padding: 1.5rem 2rem;
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 1.5rem;
+      overflow: hidden;
+      background: #0b101b;
+    }
+
+    /* Left Services Column */
+    .services-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #0f233f, #091224);
+      border: 1px solid #1e3a5f;
+      border-radius: 10px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .hero-text h2 { font-size: 1.2rem; font-weight: 800; color: #f8fafc; margin-bottom: 0.25rem; }
+    .hero-text p { font-size: 0.775rem; color: #94a3b8; max-width: 480px; }
+    .stat-pill {
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      border-radius: 6px;
+      padding: 0.5rem 0.85rem;
+      text-align: right;
+    }
+    .stat-pill span { display: block; font-size: 0.65rem; color: #94a3b8; }
+    .stat-pill strong { font-size: 1.1rem; color: #38bdf8; font-family: 'JetBrains Mono', monospace; }
+
+    /* E-Surat Grid */
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .doc-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    .doc-card {
+      background: #111a2e;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+    }
+    .doc-card:hover { border-color: #38bdf8; background: #132038; }
+    .doc-top { display: flex; justify-content: space-between; align-items: flex-start; }
+    .doc-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 6px;
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      display: grid;
+      place-items: center;
+    }
+    .doc-time { font-size: 0.65rem; color: #64748b; font-family: 'JetBrains Mono', monospace; }
+    .doc-card h3 { font-size: 0.875rem; font-weight: 700; color: #f8fafc; }
+    .doc-card p { font-size: 0.725rem; color: #94a3b8; line-height: 1.4; flex-grow: 1; }
+    .doc-action {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.5rem;
+      border-top: 1px solid #1a263e;
+      font-size: 0.7rem;
+      color: #38bdf8;
+      font-weight: 600;
+    }
+
+    /* Right Tracking & Map Column */
+    .tracking-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .tracking-card {
+      background: #111a2e;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .tracking-card h3 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
+    .ticket-input-box {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .ticket-input {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.5rem 0.75rem;
+      color: #f8fafc;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.775rem;
+      font-weight: 600;
+      flex-grow: 1;
+      outline: none;
+    }
+    .ticket-btn {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 0 0.85rem;
+      border-radius: 6px;
+      font-weight: 700;
+      font-size: 0.725rem;
+      cursor: pointer;
+    }
+
+    .tracking-result {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.85rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+    .result-row { display: flex; justify-content: space-between; font-size: 0.725rem; }
+    .result-lbl { color: #64748b; }
+    .result-val { color: #f8fafc; font-weight: 600; }
+    .status-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: rgba(34, 197, 94, 0.15);
+      color: #4ade80;
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      font-size: 0.675rem;
+      font-weight: 700;
+      margin-top: 0.25rem;
+    }
+
+    /* Facilities Map Widget */
+    .map-widget {
+      background: #111a2e;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      flex-grow: 1;
+    }
+    .map-header { display: flex; justify-content: space-between; align-items: center; }
+    .map-header h3 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; }
+    .map-preview {
+      background: #090e17;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      height: 140px;
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+    .facility-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      font-size: 0.725rem;
+    }
+    .facility-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+    }
+    .fac-dot { width: 6px; height: 6px; border-radius: 50%; background: #38bdf8; }
+  </style>
+</head>
+<body>
+
+  <!-- Civic Top Bar -->
+  <div class="civic-topbar">
+    <div class="civic-badge">
+      <span class="seal-dot"></span>
+      <span>PEMERINTAH KABUPATEN TULUNGAGUNG &bull; KECAMATAN REJOTANGAN</span>
+    </div>
+    <div class="mono">
+      <span>LAT: 08°12'S &bull; LONG: 112°00'E &bull; KODE POS: 66293</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation -->
+  <header class="main-nav">
+    <div class="brand-wrap">
+      <div class="brand-logo">DR</div>
+      <div class="brand-title">
+        <h1>DESA REJOTANGAN</h1>
+        <p>Portal Layanan Administrasi Mandiri</p>
+      </div>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#" class="active">Beranda Layanan</a></li>
+      <li><a href="#">Surat Kependudukan</a></li>
+      <li><a href="#">Lacak Berkas</a></li>
+      <li><a href="#">Peta Geospasial</a></li>
+      <li><a href="#">Direktori UMKM</a></li>
+    </ul>
+    <button class="btn-apply">
+      <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 4v16m8-8H4"/></svg>
+      Ajukan Permohonan
+    </button>
+  </header>
+
+  <!-- Workspace Body -->
+  <main class="portal-body">
+    <!-- Left Services Column -->
+    <div class="services-col">
+      <div class="hero-banner">
+        <div class="hero-text">
+          <h2>Pelayanan Administrasi Warga Mandiri</h2>
+          <p>Urus surat pengantar, izin usaha mikro, dan dokumen kependudukan secara daring dari rumah tanpa antrean fisik di kantor kelurahan.</p>
+        </div>
+        <div class="stat-pill">
+          <span>SURAT TERBIT BULAN INI</span>
+          <strong>142 Berkas</strong>
+        </div>
+      </div>
+
+      <div class="section-label">
+        <svg width="16" height="16" fill="none" stroke="#38bdf8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Pilihan Layanan Surat Terpadu Daring
+      </div>
+
+      <div class="doc-grid">
+        <div class="doc-card">
+          <div class="doc-top">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg></div>
+            <span class="doc-time">Estimasi: 1x24 Jam</span>
+          </div>
+          <h3>Surat Pengantar SKCK</h3>
+          <p>Permohonan surat pengantar untuk penerbitan SKCK di Polsek Rejotangan / Polres Tulungagung.</p>
+          <div class="doc-action">
+            <span>Syarat: KTP &amp; KK</span>
+            <span>Mulai Formulir &rarr;</span>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-top">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+            <span class="doc-time">Estimasi: 2 Jam Kerja</span>
+          </div>
+          <h3>Surat Keterangan Usaha (SKU)</h3>
+          <p>Keterangan resmi bagi pelaku UMKM di Desa Rejotangan untuk pengajuan modal usaha &amp; legalitas.</p>
+          <div class="doc-action">
+            <span>Syarat: Foto Tempat Usaha</span>
+            <span>Mulai Formulir &rarr;</span>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-top">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+            <span class="doc-time">Estimasi: Instan (Otomatis)</span>
+          </div>
+          <h3>Surat Keterangan Domisili</h3>
+          <p>Bukti kependudukan resmi untuk administrasi perbankan, pekerjaan, atau keperluan sekolah.</p>
+          <div class="doc-action">
+            <span>Syarat: NIK Terverifikasi</span>
+            <span>Mulai Formulir &rarr;</span>
+          </div>
+        </div>
+
+        <div class="doc-card">
+          <div class="doc-top">
+            <div class="doc-icon"><svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+            <span class="doc-time">Estimasi: 1x24 Jam</span>
+          </div>
+          <h3>Surat Ket. Tidak Mampu (SKTM)</h3>
+          <p>Dokumen pendukung untuk beasiswa pendidikan siswa dan keringanan biaya medis rumah sakit.</p>
+          <div class="doc-action">
+            <span>Syarat: Rekomendasi RT/RW</span>
+            <span>Mulai Formulir &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Tracking & Info Column -->
+    <div class="tracking-col">
+      <!-- Tracking Form -->
+      <div class="tracking-card">
+        <h3>Lacak Status Berkas Warga</h3>
+        <div class="ticket-input-box">
+          <input type="text" class="ticket-input mono" value="TIKET-RJT-2026-0814" readonly>
+          <button class="ticket-btn">Cari</button>
+        </div>
+        <div class="tracking-result">
+          <div class="result-row">
+            <span class="result-lbl">Nama Pemohon:</span>
+            <span class="result-val">Budi Santoso</span>
+          </div>
+          <div class="result-row">
+            <span class="result-lbl">Jenis Dokumen:</span>
+            <span class="result-val">Surat Pengantar SKCK</span>
+          </div>
+          <div class="result-row">
+            <span class="result-lbl">Diajukan:</span>
+            <span class="result-val mono">19/10/2026 09:15</span>
+          </div>
+          <span class="status-badge">&check; SELESAI &bull; SIAP DIAMBIL DI BALAI DESA</span>
+        </div>
+      </div>
+
+      <!-- Facilities Geolocation Map -->
+      <div class="map-widget">
+        <div class="map-header">
+          <h3>Peta Fasilitas Desa</h3>
+          <span class="mono" style="font-size: 0.65rem; color: #38bdf8;">GPS Sync</span>
+        </div>
+        <div class="map-preview">
+          <!-- Stylized Mini Vector Map -->
+          <svg width="100%" height="100%" viewBox="0 0 300 130" style="background:#090e17;">
+            <path d="M10 40 Q 80 60 160 30 T 290 80" stroke="#1e293b" stroke-width="6" fill="none"/>
+            <path d="M70 10 L 70 120" stroke="#1e293b" stroke-width="4" fill="none"/>
+            <path d="M200 10 L 200 120" stroke="#1e293b" stroke-width="4" fill="none"/>
+            <circle cx="160" cy="30" r="10" fill="#38bdf8" opacity="0.2"/>
+            <circle cx="160" cy="30" r="4" fill="#38bdf8"/>
+            <text x="175" y="34" fill="#f8fafc" font-family="sans-serif" font-size="10" font-weight="bold">Balai Desa Rejotangan</text>
+            <circle cx="70" cy="80" r="4" fill="#4ade80"/>
+            <text x="82" y="84" fill="#94a3b8" font-family="sans-serif" font-size="9">Pasar Rejotangan</text>
+          </svg>
+        </div>
+        <div class="facility-list">
+          <div class="facility-item"><span class="fac-dot"></span><span>Kantor Kepala Desa &bull; Jl. Veteran No. 1</span></div>
+          <div class="facility-item"><span class="fac-dot"></span><span>Puskesmas Pembantu Rejotangan &bull; 24 Jam</span></div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>

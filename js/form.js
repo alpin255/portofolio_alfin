@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnWhatsApp) {
     btnWhatsApp.addEventListener('click', (e) => {
       e.preventDefault();
-      const phone = '6281234567890'; // User can customize this number
+      const phone = '6285816288915';
       const message = encodeURIComponent(
         'Halo Muhammad Alfin Prayoga! Saya tertarik dengan portofolio Anda dan ingin berdiskusi mengenai proyek kolaborasi / tawaran kerja sama web development.'
       );

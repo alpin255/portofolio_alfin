@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=1280, initial-scale=1.0">
+  <title>E-Pelanggaran SMKN 1 Rejotangan — Dashboard Kedisiplinan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #0b0f19;
+      color: #e2e8f0;
+      width: 1280px;
+      height: 800px;
+      overflow: hidden;
+      display: flex;
+    }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #0f172a;
+      border-right: 1px solid #1e293b;
+      display: flex;
+      flex-direction: column;
+      flex-shrink: 0;
+    }
+    .brand {
+      padding: 1.25rem 1.25rem 1rem;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+    }
+    .brand-text h2 { font-size: 0.85rem; font-weight: 700; color: #f8fafc; letter-spacing: -0.01em; }
+    .brand-text p { font-size: 0.675rem; color: #94a3b8; }
+    
+    .nav-list { list-style: none; padding: 1rem 0.75rem; display: flex; flex-direction: column; gap: 0.25rem; flex-grow: 1; }
+    .nav-label { font-size: 0.65rem; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; padding: 0.5rem 0.6rem 0.25rem; }
+    .nav-item a {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.6rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #94a3b8;
+      text-decoration: none;
+      transition: all 0.15s ease;
+    }
+    .nav-item.active a {
+      background: rgba(56, 189, 248, 0.12);
+      color: #38bdf8;
+      font-weight: 600;
+    }
+    .nav-item a svg { width: 16px; height: 16px; stroke-width: 2; }
+    
+    .sidebar-footer {
+      padding: 1rem 1.25rem;
+      border-top: 1px solid #1e293b;
+      background: #0b1120;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: #0284c7;
+      color: white;
+      display: grid;
+      place-items: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      border: 2px solid #38bdf8;
+    }
+    .user-info h4 { font-size: 0.75rem; font-weight: 600; color: #f1f5f9; }
+    .user-info p { font-size: 0.65rem; color: #38bdf8; }
+    
+    /* Main Content */
+    .main {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      background: #090d16;
+    }
+    
+    /* Header */
+    .topbar {
+      height: 60px;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 1.75rem;
+      background: #0f172a;
+    }
+    .topbar-left { display: flex; align-items: center; gap: 1rem; }
+    .topbar-title { font-size: 0.95rem; font-weight: 700; color: #f8fafc; }
+    .year-badge {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+    }
+    .topbar-right { display: flex; align-items: center; gap: 0.85rem; }
+    .search-box {
+      background: #090d16;
+      border: 1px solid #1e293b;
+      border-radius: 6px;
+      padding: 0.4rem 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      width: 240px;
+      font-size: 0.775rem;
+      color: #94a3b8;
+    }
+    .btn-action {
+      background: #0284c7;
+      color: white;
+      border: none;
+      padding: 0.45rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+    }
+    
+    /* Dashboard Area */
+    .dashboard-body {
+      padding: 1.5rem 1.75rem;
+      overflow-y: auto;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    
+    /* Metrics Row */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    .metric-card {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 1rem 1.15rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      position: relative;
+    }
+    .metric-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: #1e293b;
+      border-radius: 8px 8px 0 0;
+    }
+    .metric-card.accent-blue::before { background: #38bdf8; }
+    .metric-card.accent-amber::before { background: #f59e0b; }
+    .metric-card.accent-rose::before { background: #f43f5e; }
+    .metric-card.accent-emerald::before { background: #10b981; }
+    
+    .metric-header { display: flex; justify-content: space-between; align-items: center; }
+    .metric-title { font-size: 0.725rem; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.04em; }
+    .metric-val { font-size: 1.65rem; font-weight: 700; color: #f8fafc; font-family: 'JetBrains Mono', monospace; line-height: 1.2; }
+    .metric-sub { font-size: 0.675rem; color: #64748b; }
+    
+    /* Split Content */
+    .content-split {
+      display: grid;
+      grid-template-columns: 2.1fr 1fr;
+      gap: 1.25rem;
+      flex-grow: 1;
+    }
+    
+    /* Table Card */
+    .card-panel {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-header {
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid #1e293b;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-title { font-size: 0.85rem; font-weight: 700; color: #f1f5f9; display: flex; align-items: center; gap: 0.5rem; }
+    .table-container { overflow-x: auto; flex-grow: 1; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.775rem; text-align: left; }
+    th {
+      background: #0b1120;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.675rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #1e293b;
+    }
+    td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #1e293b;
+      color: #cbd5e1;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: rgba(255, 255, 255, 0.015); }
+    
+    .badge {
+      display: inline-block;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .badge-points { background: rgba(244, 63, 94, 0.15); color: #fda4af; border: 1px solid rgba(244, 63, 94, 0.3); }
+    .badge-resolved { background: rgba(16, 185, 129, 0.15); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.3); }
+    .badge-action { background: rgba(245, 158, 11, 0.15); color: #fcd34d; border: 1px solid rgba(245, 158, 11, 0.3); }
+    .badge-class { background: #1e293b; color: #94a3b8; font-weight: 600; }
+    
+    .btn-row {
+      background: rgba(56, 189, 248, 0.1);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: #38bdf8;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      font-size: 0.675rem;
+      cursor: pointer;
+    }
+    
+    /* Right Analytics Column */
+    .analytics-panel {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .dept-bars {
+      padding: 1rem 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .dept-item { display: flex; flex-direction: column; gap: 0.3rem; }
+    .dept-info { display: flex; justify-content: space-between; font-size: 0.725rem; }
+    .dept-name { color: #cbd5e1; font-weight: 500; }
+    .dept-count { color: #38bdf8; font-family: 'JetBrains Mono', monospace; }
+    .dept-bar-bg { height: 6px; background: #1e293b; border-radius: 3px; overflow: hidden; }
+    .dept-bar-fill { height: 100%; border-radius: 3px; background: #0284c7; }
+    
+    .sp-preview-box {
+      margin: 0 1.25rem 1rem;
+      background: #090d16;
+      border: 1px dashed #334155;
+      border-radius: 6px;
+      padding: 0.85rem;
+    }
+    .sp-title { font-size: 0.75rem; font-weight: 700; color: #f8fafc; margin-bottom: 0.35rem; }
+    .sp-desc { font-size: 0.675rem; color: #94a3b8; line-height: 1.45; }
+    .sp-badge { font-size: 0.65rem; color: #f43f5e; font-weight: 600; margin-top: 0.4rem; display: inline-block; }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="brand">
+      <div class="brand-icon">BK</div>
+      <div class="brand-text">
+        <h2>SMKN 1 REJOTANGAN</h2>
+        <p>E-Pelanggaran &amp; Tata Tertib</p>
+      </div>
+    </div>
+
+    <ul class="nav-list">
+      <li class="nav-label">Menu Utama</li>
+      <li class="nav-item active"><a href="#"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Dashboard Utama</a></li>
+      <li class="nav-item"><a href="#"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Data Pelanggaran</a></li>
+      <li class="nav-item"><a href="#"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>Direktori Siswa</a></li>
+      
+      <li class="nav-label">Penindakan BK</li>
+      <li class="nav-item"><a href="#"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M12 18v-6"/><path d="M8 15l4 4 4-4"/></svg>Cetak Surat SP (1/2/3)</a></li>
+      <li class="nav-item"><a href="#"><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 14 14"/></svg>Log Riwayat Poin</a></li>
+    </ul>
+
+    <div class="sidebar-footer">
+      <div class="avatar">AP</div>
+      <div class="user-info">
+        <h4>Alfin Prayoga</h4>
+        <p>Developer / IT Magang</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main View -->
+  <main class="main">
+    <!-- Topbar -->
+    <header class="topbar">
+      <div class="topbar-left">
+        <h1 class="topbar-title">Sistem Kedisiplinan &amp; Poin Siswa</h1>
+        <span class="year-badge mono">TA 2025/2026 &bull; SEMESTER GANJIL</span>
+      </div>
+      <div class="topbar-right">
+        <div class="search-box">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <span>Cari NISN atau nama siswa...</span>
+        </div>
+        <button class="btn-action">
+          <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          Input Pelanggaran
+        </button>
+      </div>
+    </header>
+
+    <!-- Body -->
+    <div class="dashboard-body">
+      <!-- 4 Metric Cards -->
+      <div class="metrics-grid">
+        <div class="metric-card accent-blue">
+          <div class="metric-header">
+            <span class="metric-title">Total Kasus Bulan Ini</span>
+          </div>
+          <div class="metric-val">42</div>
+          <span class="metric-sub">&minus;14% dibanding bulan lalu</span>
+        </div>
+        <div class="metric-card accent-amber">
+          <div class="metric-header">
+            <span class="metric-title">Pembinaan Aktif BK</span>
+          </div>
+          <div class="metric-val">15</div>
+          <span class="metric-sub">Dalam pantauan konseling</span>
+        </div>
+        <div class="metric-card accent-rose">
+          <div class="metric-header">
+            <span class="metric-title">Surat SP Terbit</span>
+          </div>
+          <div class="metric-val">04</div>
+          <span class="metric-sub">SP-1: 3 siswa &bull; SP-2: 1 siswa</span>
+        </div>
+        <div class="metric-card accent-emerald">
+          <div class="metric-header">
+            <span class="metric-title">Tingkat Ketertiban</span>
+          </div>
+          <div class="metric-val">96.2%</div>
+          <span class="metric-sub">Kategori Sangat Tertib</span>
+        </div>
+      </div>
+
+      <!-- Split Table & Analytics -->
+      <div class="content-split">
+        <!-- Live Table -->
+        <div class="card-panel">
+          <div class="card-header">
+            <h3 class="card-title">
+              <svg width="16" height="16" fill="none" stroke="#38bdf8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              Pelanggaran Siswa Terverifikasi Terbaru
+            </h3>
+            <span class="mono" style="font-size: 0.7rem; color: #64748b;">Laravel REST &bull; Vue 3 SPA</span>
+          </div>
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>NISN</th>
+                  <th>Nama Siswa</th>
+                  <th>Kelas</th>
+                  <th>Jenis Pelanggaran</th>
+                  <th>Bobot</th>
+                  <th>Tindakan BK</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="mono">0068192301</td>
+                  <td><strong>Bagas Prasetyo</strong></td>
+                  <td><span class="badge badge-class">XII TKR 1</span></td>
+                  <td>Terlambat Masuk Jam Ke-1 (&gt;15 mnt)</td>
+                  <td><span class="badge badge-points">+5 Poin</span></td>
+                  <td><span class="badge badge-action">Peringatan Lisan</span></td>
+                  <td><button class="btn-row">Detail</button></td>
+                </tr>
+                <tr>
+                  <td class="mono">0071928412</td>
+                  <td><strong>Dimas Aditya</strong></td>
+                  <td><span class="badge badge-class">XI RPL 2</span></td>
+                  <td>Atribut Seragam &amp; Sabuk Tidak Lengkap</td>
+                  <td><span class="badge badge-points">+5 Poin</span></td>
+                  <td><span class="badge badge-resolved">Tuntas Dibina</span></td>
+                  <td><button class="btn-row">Detail</button></td>
+                </tr>
+                <tr>
+                  <td class="mono">0062819403</td>
+                  <td><strong>Rendi Kurniawan</strong></td>
+                  <td><span class="badge badge-class">XII TKR 2</span></td>
+                  <td>Merokok di Luar Pagar Sekolah</td>
+                  <td><span class="badge badge-points" style="color: #f43f5e; font-weight: 700;">+25 Poin</span></td>
+                  <td><span class="badge badge-points">Panggilan Ortu (SP-2)</span></td>
+                  <td><button class="btn-row" style="background:#f43f5e20; color:#fda4af; border-color:#f43f5e40;">Cetak SP</button></td>
+                </tr>
+                <tr>
+                  <td class="mono">0073829105</td>
+                  <td><strong>Siti Nurhaliza</strong></td>
+                  <td><span class="badge badge-class">X AKL 1</span></td>
+                  <td>Meninggalkan Jam Pelajaran Tanpa Izin</td>
+                  <td><span class="badge badge-points">+10 Poin</span></td>
+                  <td><span class="badge badge-action">Konseling BK</span></td>
+                  <td><button class="btn-row">Detail</button></td>
+                </tr>
+                <tr>
+                  <td class="mono">0069123841</td>
+                  <td><strong>Fajar Setiawan</strong></td>
+                  <td><span class="badge badge-class">XI TBSM 1</span></td>
+                  <td>Knalpot Kendaraan Tidak Standar</td>
+                  <td><span class="badge badge-points">+15 Poin</span></td>
+                  <td><span class="badge badge-points">Sita Standar</span></td>
+                  <td><button class="btn-row">Detail</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Right Side: Analytics & SP Generator -->
+        <div class="analytics-panel">
+          <div class="card-panel">
+            <div class="card-header">
+              <h3 class="card-title">Sebaran per Jurusan</h3>
+              <span class="mono" style="font-size: 0.7rem; color: #38bdf8;">Statistik</span>
+            </div>
+            <div class="dept-bars">
+              <div class="dept-item">
+                <div class="dept-info">
+                  <span class="dept-name">Teknik Kendaraan Ringan (TKR)</span>
+                  <span class="dept-count">14 Kasus</span>
+                </div>
+                <div class="dept-bar-bg"><div class="dept-bar-fill" style="width: 70%; background: #38bdf8;"></div></div>
+              </div>
+              <div class="dept-item">
+                <div class="dept-info">
+                  <span class="dept-name">Teknik Bisnis Sepeda Motor</span>
+                  <span class="dept-count">11 Kasus</span>
+                </div>
+                <div class="dept-bar-bg"><div class="dept-bar-fill" style="width: 55%; background: #0284c7;"></div></div>
+              </div>
+              <div class="dept-item">
+                <div class="dept-info">
+                  <span class="dept-name">Rekayasa Perangkat Lunak (RPL)</span>
+                  <span class="dept-count">8 Kasus</span>
+                </div>
+                <div class="dept-bar-bg"><div class="dept-bar-fill" style="width: 40%; background: #60a5fa;"></div></div>
+              </div>
+              <div class="dept-item">
+                <div class="dept-info">
+                  <span class="dept-name">Akuntansi &amp; Keuangan Lembaga</span>
+                  <span class="dept-count">5 Kasus</span>
+                </div>
+                <div class="dept-bar-bg"><div class="dept-bar-fill" style="width: 25%; background: #93c5fd;"></div></div>
+              </div>
+            </div>
+
+            <div class="sp-preview-box">
+              <h4 class="sp-title">Otomasi PDF Surat Panggilan</h4>
+              <p class="sp-desc">Sistem otomatis menghitung batas akumulasi &ge;30 poin dan menghasilkan format surat resmi SMKN 1 Rejotangan siap tanda tangan.</p>
+              <span class="sp-badge mono">&bull; FITUR PRODUKSI TERUJI MAGANG</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</body>
+</html>
